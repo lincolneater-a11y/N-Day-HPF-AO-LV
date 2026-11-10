@@ -8,7 +8,7 @@
  *     por la nueva y guardar (commit). Todos los dispositivos toman el cambio solos.
  */
 window.NDAY_CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbzcpa39C9Ddus3K_PGCtTbRcn-eJW82tEZQFPKCV80rzbFMaMWrtfRTp6ev8OwSi0817Q/exec',
+  API_URL: '',
 
   // Logos: subir los archivos a la carpeta assets/ con estos nombres (PNG, fondo blanco o transparente).
   // Si un archivo no existe, simplemente no se muestra.
