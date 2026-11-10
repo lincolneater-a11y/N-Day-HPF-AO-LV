@@ -176,7 +176,7 @@ const LS = {
 /* =====================================================================
    2. BACKEND: Google Apps Script o MODO DEMO (datos solo en este dispositivo)
    ===================================================================== */
-const APPCFG = Object.assign({API_URL:'', LOGO_HOSPITAL:'assets/logo-hospital.png', LOGO_NUTRICION:'assets/logo-nutricion.png', NOMBRE_SERVICIO:''}, window.NDAY_CONFIG||{});
+const APPCFG = Object.assign({API_URL:'', LOGO_HOSPITAL:'assets/logo-hospital.png', LOGO_NUTRICION:'assets/logo-nutricion.png', NOMBRE_SERVICIO:'', MANUAL_URL:'docs/Manual_Registro_nDay_HPF.pdf'}, window.NDAY_CONFIG||{});
 function apiUrl(){ const o = LS.get('ndhpf_api_override', ''); return String(o || APPCFG.API_URL || '').trim(); }
 const MODE = apiUrl() ? 'api' : (window.google && google.script && google.script.run) ? 'gas' : 'demo';
 const DEMO = MODE === 'demo';
@@ -545,23 +545,27 @@ function viewHome(){
    ${APPCFG.NOMBRE_SERVICIO?`<div class="unit" style="margin-top:-2px">${esc(APPCFG.NOMBRE_SERVICIO)}</div>`:''}
    <p class="lead">nutritionDay · ${fmtDate(CFG.fecha)} · Registro digital sin papel. Elegí qué vas a completar.</p>
    ${DEMO?`<div class="hint bord"><b>Modo demostración.</b> Los datos se guardan solo en este dispositivo. Para conectar la planilla de Google, cargar la URL de la API en config.js (ver manual) o en <a href="#ajustes">Conexión con la planilla</a>.</div>`:''}
-   <div class="card install" id="installcard" style="display:none;margin-bottom:12px"></div>
    <div class="grid-cards">
     ${order.map(id=>{ const f=FORMS[id]; return `<a class="card" href="#${id}"><div class="ic ${f.cls}">${f.ic}</div><h3>${f.short}</h3><p>${esc(f.title)} · ${f.time}</p><span class="who">${esc(f.tag)}</span></a>`; }).join('')}
     <a class="card" href="#panel"><div class="ic t-gold">📊</div><h3>Panel de resultados</h3><p>Resumen automático, avance por unidad, informe imprimible</p><span class="who">requiere PIN</span></a>
-    <a class="card" href="#ayuda"><div class="ic t-navy">❓</div><h3>Guía rápida</h3><p>Cómo se organiza el día y qué completa cada uno</p><span class="who">2 min de lectura</span></a>
+    <a class="card" href="#ayuda"><div class="ic t-navy">❓</div><h3>Guía y manual</h3><p>Cómo se organiza el día, manual de usuario e instalación en el celular</p><span class="who">ayuda</span></a>
    </div>
    <p class="unit" style="text-align:center;margin-top:16px"><a href="#ajustes" style="color:var(--mut)">⚙ Conexión con la planilla</a></p>
    <div class="foot">Basado en los cuestionarios nutritionDay en el Hospital (2024 v1, nutritionDay worldwide · ESPEN · MedUni Viena, CC BY-NC-ND).<br>Herramienta interna de captura; los datos se cargan luego en la base oficial nutritionDay.</div>`;
   afterHome();
 }
-function afterHome(){ paintLogos(); paintInstall(); }
+function afterHome(){ paintLogos(); }
 function fmtDate(s){ if(!s) return '—'; const m=String(s).match(/^(\d{4})-(\d{2})-(\d{2})/); return m? `${m[3]}/${m[2]}/${m[1]}` : s; }
 
 function viewAyuda(){
   $('#app').innerHTML = `
-  <h1>Guía rápida del día</h1>
+  <h1>Guía y manual</h1>
   <p class="lead">Todo se completa en el celular, tablet o computadora. No hace falta imprimir los cuestionarios.</p>
+  <div class="grid-cards" style="margin-bottom:14px">
+   ${APPCFG.MANUAL_URL?`<a class="card" href="${esc(APPCFG.MANUAL_URL)}" target="_blank" rel="noopener"><div class="ic t-bord">📘</div><h3>Manual de usuario</h3><p>Instalación, uso de cada formulario, panel, seguimiento a 30 días y protección de datos</p><span class="who">abrir PDF</span></a>`:''}
+   <div class="card install" id="installcard" style="display:none"></div>
+  </div>
+  <h2>Guía rápida del día</h2>
   <div class="card"><h3>Antes (miércoles 11)</h3><ol class="steps">
    <li>Entregar el consentimiento informado a todos los pacientes internados en las unidades participantes. <b>La firma sigue siendo en papel.</b></li>
    <li>La coordinación completa la <b>Hoja del Hospital</b> (una sola vez).</li></ol></div><br>
@@ -577,6 +581,7 @@ function viewAyuda(){
    <li>Transcribir a la base oficial nutritionDay desde la planilla o desde la “ficha” de cada paciente.</li></ol></div>
   <div class="hint teal" style="margin-top:14px"><b>Sin señal en la sala:</b> la app guarda el registro en el dispositivo y lo envía sola cuando vuelve la conexión (aparece un aviso amarillo arriba). No cierres la pestaña hasta que desaparezca.</div>
   <div class="hint">Se puede corregir un registro: abrí el mismo formulario, elegí la misma unidad y número y tocá <b>“Cargar datos guardados”</b>. Al guardar, se actualiza (no se duplica).</div>`;
+  paintInstall();
 }
 
 /* =====================================================================
@@ -1003,7 +1008,8 @@ window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferred
 window.addEventListener('appinstalled', ()=>{ deferredPrompt=null; toast('Acceso directo instalado ✓'); paintInstall(); });
 function paintInstall(){
   const c=$('#installcard'); if(!c) return;
-  if (isStandalone() || location.protocol==='file:'){ c.style.display='none'; return; }
+  if (location.protocol==='file:'){ c.style.display='none'; return; }
+  if (isStandalone()){ c.style.display=''; c.innerHTML=`<div class="ic t-teal">✅</div><h3>App instalada</h3><p>Estás usando el acceso directo de este dispositivo.</p>`; return; }
   c.style.display='';
   if (deferredPrompt){
     c.innerHTML=`<div class="ic t-gold">📲</div><h3>Instalar en este dispositivo</h3><p>Agrega un acceso directo en la pantalla de inicio. Se abre como una app, a pantalla completa.</p>

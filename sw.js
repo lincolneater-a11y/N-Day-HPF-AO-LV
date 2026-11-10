@@ -3,7 +3,7 @@
  * Nunca guarda datos de pacientes ni respuestas de la planilla (otro dominio).
  * Al publicar cambios importantes, subir el número de versión.
  */
-const VERSION = 'ndhpf-v2';
+const VERSION = 'ndhpf-v3';
 const SHELL = ['./', 'index.html', 'config.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'assets/logo-hospital.png', 'assets/logo-nutricion.png'];
