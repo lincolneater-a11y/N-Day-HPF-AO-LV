@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>nutritionDay 2026 · HPF</title>
+<meta name="description" content="Registro digital del nutritionDay 2026 · Hospital Papa Francisco">
+<meta name="theme-color" content="#1F2A44">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="nDay HPF">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script src="config.js"></script>
+<style>
+:root{
+  --navy:#1F2A44; --teal:#0F7C7C; --teal-l:#E3F2F1; --bord:#7A1F3D; --bord-l:#F6E7EC;
+  --gold:#C9A227; --gold-l:#FBF4DF; --ink:#1d2433; --mut:#5d6677; --line:#dfe3ea; --bg:#f4f6f9; --ok:#1d7a46;
+  --r:12px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+header.top{padding-top:max(10px, env(safe-area-inset-top))!important;position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+header.top .brand{font-weight:700;letter-spacing:.2px;cursor:pointer;display:flex;align-items:center;gap:8px}
+header.top .brand small{display:block;font-weight:400;opacity:.75;font-size:12px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:13px}
+header.top .sp{flex:1}
+.hlogo{height:36px;width:36px;border-radius:50%;background:#fff;display:none;object-fit:contain}
+.logos{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.logos img{height:96px;width:96px;max-width:44%;object-fit:contain;display:none}
+.install{border:1.5px solid var(--gold);background:var(--gold-l)}
+.chip{font-size:12px;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.14);white-space:nowrap}
+.chip.warn{background:var(--gold);color:var(--navy);font-weight:700;cursor:pointer}
+.chip.demo{background:var(--bord);}
+main{max-width:860px;margin:0 auto;padding:16px 14px 110px}
+h1{font-size:22px;margin:6px 0 4px;color:var(--navy)}
+h2{font-size:18px;margin:18px 0 8px;color:var(--navy)}
+.lead{color:var(--mut);margin:0 0 14px}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+a.card,button.card{display:block;text-align:left;text-decoration:none;color:inherit;cursor:pointer;transition:transform .08s,box-shadow .12s;width:100%}
+a.card:hover,button.card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(31,42,68,.10)}
+.card .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:20px;margin-bottom:8px}
+.card h3{margin:0 0 3px;font-size:16px;color:var(--navy)}
+.card p{margin:0;color:var(--mut);font-size:14px}
+.card .who{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--teal-l);color:var(--teal)}
+.t-teal{background:var(--teal-l);color:var(--teal)} .t-bord{background:var(--bord-l);color:var(--bord)} .t-gold{background:var(--gold-l);color:#8a6d0f} .t-navy{background:#e6e9f1;color:var(--navy)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:6px 0 6px 38px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:5px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+/* form */
+.fhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.badge{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.prog{height:6px;background:#e3e7ee;border-radius:99px;overflow:hidden;margin:8px 0 4px}
+.prog i{display:block;height:100%;background:var(--teal);transition:width .2s}
+.pnav{display:flex;gap:6px;overflow-x:auto;padding:6px 0 10px;scrollbar-width:thin}
+.pnav button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;color:var(--mut)}
+.pnav button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pnav button.done{border-color:var(--teal);color:var(--teal)}
+.q{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 14px 12px;margin:10px 0}
+.q .ql{font-weight:650;margin-bottom:8px;color:var(--navy)}
+.q .ql .code{display:inline-block;min-width:34px;font-size:12px;font-weight:700;color:var(--teal);margin-right:4px}
+.q .qh{font-size:13px;color:var(--mut);margin:-4px 0 8px}
+.q.answered{border-left:4px solid var(--teal)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;user-select:none;min-height:42px;display:flex;align-items:center;gap:6px;line-height:1.2;text-align:left}
+.opt:hover{border-color:#b9c1cf}
+.opt.sel{background:var(--teal);border-color:var(--teal);color:#fff}
+.opt.chk.sel{background:var(--navy);border-color:var(--navy)}
+.opt.chk::before{content:"";width:14px;height:14px;border:2px solid currentColor;border-radius:3px;opacity:.6;flex:0 0 auto}
+.opt.chk.sel::before{content:"✓";border:0;opacity:1;font-size:14px;line-height:14px;width:14px}
+.grp{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--bord);margin:10px 0 6px;width:100%}
+.row{padding:8px 0;border-top:1px dashed var(--line)}
+.row:first-child{border-top:0}
+.row .rl{font-size:14.5px;margin-bottom:6px}
+.row .opts .opt{min-height:36px;padding:6px 11px;font-size:14px}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;min-height:44px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+.inl{display:flex;gap:8px;align-items:center}
+.inl input{max-width:180px}
+.unit{color:var(--mut);font-size:14px}
+.ng{width:100%;border-collapse:collapse;font-size:14px}
+.ng th{font-weight:600;color:var(--mut);font-size:12.5px;text-align:center;padding:4px}
+.ng td{padding:4px;border-top:1px dashed var(--line)}
+.ng td:first-child{padding-right:8px}
+.ng input{min-height:38px;padding:6px 8px;text-align:center}
+.ng input:disabled{background:#e9ecf1}
+.hint{font-size:13px;padding:10px 12px;border-radius:10px;background:var(--gold-l);color:#6b560e;margin:8px 0}
+.hint.bord{background:var(--bord-l);color:var(--bord)}
+.hint.teal{background:var(--teal-l);color:#0b5c5c}
+.idbox{border:2px dashed var(--bord);background:#fffafb}
+.idbox .ql{color:var(--bord)}
+.bar{padding-bottom:max(10px, env(safe-area-inset-bottom))!important;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;justify-content:center;z-index:15;box-shadow:0 -2px 10px rgba(0,0,0,.05)}
+.bar .in{max-width:860px;width:100%;display:flex;gap:10px}
+.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:650;cursor:pointer;min-height:46px;background:#e8ebf1;color:var(--navy)}
+.btn.pri{background:var(--teal);color:#fff}
+.btn.navy{background:var(--navy);color:#fff}
+.btn.bord{background:var(--bord);color:#fff}
+.btn.ghost{background:transparent;border:1.5px solid var(--line)}
+.btn.sm{min-height:34px;padding:6px 12px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:default}
+.grow{flex:1}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px;z-index:50;max-width:92%;box-shadow:0 6px 20px rgba(0,0,0,.25);font-size:14px}
+.toast.err{background:var(--bord)}
+.review .rv{display:grid;grid-template-columns:1fr 1.1fr;gap:4px 14px;padding:7px 0;border-top:1px solid #eef0f4;font-size:14px}
+.review .rv .a{font-weight:600}
+.review .rv .a.empty{color:#a3aab6;font-weight:400}
+.review h3{margin:16px 0 4px;color:var(--teal);font-size:15px}
+/* patient mode */
+.patient .q .ql{font-size:19px}
+.patient .opt{font-size:17px;min-height:52px;padding:10px 16px}
+.patient .row .rl{font-size:17px}
+.patient .row .opts .opt{font-size:16px;min-height:46px}
+.patient input{font-size:18px}
+.face{font-size:24px}
+.plate{width:44px;height:44px}
+/* panel */
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.kpi .v{font-size:26px;font-weight:800;color:var(--navy);line-height:1.1}
+.kpi .l{font-size:12.5px;color:var(--mut)}
+.chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;break-inside:avoid}
+.chart h4{margin:0 0 2px;color:var(--navy);font-size:15px}
+.chart .sub{font-size:12px;color:var(--mut);margin-bottom:10px}
+.br{display:grid;grid-template-columns:minmax(110px,40%) 1fr 64px;align-items:center;gap:8px;margin:5px 0;font-size:13.5px}
+.br .tr{background:#eef1f5;border-radius:6px;height:18px;overflow:hidden}
+.br .tr i{display:block;height:100%;border-radius:6px}
+.br .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--mut);font-size:12.5px}
+.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+table.lst{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:14px}
+table.lst th{background:#eef1f6;text-align:left;padding:8px;font-size:12.5px;color:var(--mut)}
+table.lst td{padding:8px;border-top:1px solid #eef0f4}
+.ok{color:var(--ok);font-weight:700}.no{color:#b3261e;font-weight:700}
+.foot{font-size:12px;color:var(--mut);margin-top:26px;text-align:center}
+.printonly{display:none}
+@media (max-width:600px){
+  .charts{grid-template-columns:1fr}
+  .review .rv{grid-template-columns:1fr}
+  header.top .brand small{display:none}
+  #hl2{display:none!important}
+}
+@media print{
+  header.top,.bar,.noprint,.pnav,.toast{display:none!important}
+  .printonly{display:block}
+  body{background:#fff}
+  main{max-width:none;padding:0}
+  .chart,.kpi,.q{box-shadow:none}
+  .charts{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand" onclick="go('')"><img class="hlogo" id="hl1" alt="Logo del hospital"><img class="hlogo" id="hl2" alt="Logo del servicio de nutrición"><div class="logo" id="hlogo">nD</div><div>nutritionDay 2026<small id="hname">Registro digital</small></div></div>
+  <div class="sp"></div>
+  <span id="qchip" class="chip warn" style="display:none" onclick="flushQueue(true)"></span>
+  <span id="mchip" class="chip">…</span>
+</header>
+<main id="app"></main>
+<div id="bar" class="bar" style="display:none"><div class="in" id="barin"></div></div>
+
+<script>
+/* =====================================================================
+   1. ALMACENAMIENTO LOCAL SEGURO
+   ===================================================================== */
+const mem = {};
+const LS = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v==null ? d : JSON.parse(v); }catch(e){ return k in mem ? mem[k] : d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ mem[k] = v; } },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){ delete mem[k]; } }
+};
+
+/* =====================================================================
+   2. BACKEND: Google Apps Script o MODO DEMO (datos solo en este dispositivo)
+   ===================================================================== */
+const APPCFG = Object.assign({API_URL:'', LOGO_HOSPITAL:'assets/logo-hospital.png', LOGO_NUTRICION:'assets/logo-nutricion.png', NOMBRE_SERVICIO:''}, window.NDAY_CONFIG||{});
+function apiUrl(){ const o = LS.get('ndhpf_api_override', ''); return String(o || APPCFG.API_URL || '').trim(); }
+const MODE = apiUrl() ? 'api' : (window.google && google.script && google.script.run) ? 'gas' : 'demo';
+const DEMO = MODE === 'demo';
+const Mock = {
+  _db(){ return LS.get('ndhpf_demo', {hospital:[],unidad:[],pac2:[],pac3:[],seg:[],id:[]}); },
+  _save(db){ LS.set('ndhpf_demo', db); },
+  getConfig(){ return {hospital:'Hospital Papa Francisco (DEMO)', centro:'DEMO', fecha:'2026-11-12',
+    unidades:[{nombre:'Clínica Médica',codigo:'CM-DEMO',tipo:'medica'},{nombre:'Cirugía',codigo:'CX-DEMO',tipo:'quirurgica'}]}; },
+  _clave(t,r){ return t==='hospital'?'HOSPITAL': t==='unidad' ? 'U|'+r['Unidad'] : r['Unidad']+'|'+r['Paciente N°']; },
+  _up(arr, clave, rec){ const i = arr.findIndex(o=>o._clave===clave); const o = Object.assign(i>=0?arr[i]:{}, rec, {_clave:clave,_actualizado:new Date().toISOString()});
+    Object.keys(o).forEach(k=>{ if(Array.isArray(o[k])) o[k]=o[k].join(' | '); }); if(i>=0) arr[i]=o; else arr.push(o); return i>=0; },
+  guardar(t, rec, ident){ const db=this._db(); const c=this._clave(t,rec); const u=this._up(db[t], c, rec);
+    if(ident && (ident.dni||ident.cama)) this._up(db.id, c, {'Unidad':rec['Unidad'],'Paciente N°':rec['Paciente N°'],'DNI':ident.dni,'Cama / habitación':ident.cama,'Fecha nDay':rec['Fecha']});
+    this._save(db); return {ok:true, actualizado:u, clave:c}; },
+  obtener(t,u,p){ const c = t==='hospital'?'HOSPITAL': t==='unidad'?'U|'+u : u+'|'+p; return this._db()[t].find(o=>o._clave===c)||null; },
+  siguientePaciente(u){ let m=0; this._db().pac2.forEach(o=>{ if(o['Unidad']===u){ const n=parseInt(String(o['Paciente N°']).replace(/\D/g,''),10); if(n>m) m=n; }}); return m+1; },
+  _pin(p){ if(String(p)!=='1234') throw new Error('PIN incorrecto (en la demostración el PIN es 1234)'); },
+  datosPanel(p){ this._pin(p); const db=this._db(); return {config:this.getConfig(), hospital:db.hospital, unidad:db.unidad, pac2:db.pac2, pac3:db.pac3, seg:db.seg}; },
+  listaSeguimiento(p){ this._pin(p); const db=this._db(); const ids={}, segs={}; db.id.forEach(o=>ids[o._clave]=o); db.seg.forEach(o=>segs[o._clave]=o);
+    return db.pac2.map(o=>{ const i=ids[o._clave]||{}; return {unidad:o['Unidad'],paciente:o['Paciente N°'],consentimiento:o['Consentimiento informado']||'',dni:i['DNI']||'',cama:i['Cama / habitación']||'',fecha:o['Fecha']||'',cargado:!!segs[o._clave]}; }); }
+};
+async function apiFetch(url, fn, args){
+  const r = await fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({fn, args}), redirect:'follow'});
+  if (!r.ok) throw new Error('Sin conexión con la planilla (HTTP '+r.status+')');
+  const j = await r.json();
+  if (!j.ok) throw new Error(j.error || 'Error de la planilla');
+  return j.data;
+}
+function api(fn, ...args){
+  if (MODE === 'api') return apiFetch(apiUrl(), fn, args);
+  if (DEMO) return new Promise((res,rej)=>setTimeout(()=>{ try{ res(Mock[fn](...args)); }catch(e){ rej(e); } }, 120));
+  return new Promise((res,rej)=>{ google.script.run.withSuccessHandler(res).withFailureHandler(rej)[fn](...args); });
+}
+
+/* =====================================================================
+   3. DEFINICIÓN DE LOS FORMULARIOS (fiel a los cuestionarios nutritionDay en el Hospital 2024 v1)
+   ===================================================================== */
+const SNS = ['Sí','No','No lo sé'], SN = ['Sí','No'];
+const ICD = [['0600','El sistema nervioso'],['0500','Trastornos mentales y del comportamiento'],['0700','El ojo y sus anexos'],['0800','El oído y la apófisis mastoides'],
+ ['0900','El sistema circulatorio'],['1000','El sistema respiratorio'],['0400','Enfermedades endocrinas, nutricionales y metabólicas'],['1100','El sistema digestivo'],
+ ['1400','El sistema genitourinario'],['1300','El sistema osteomuscular y el tejido conjuntivo'],['1200','La piel y el tejido subcutáneo'],['0100','Enfermedades infecciosas y parasitarias'],
+ ['0200','Tumores [neoplasias]'],['0300','Sangre, órganos hematopoyéticos, mecanismos inmunológicos'],['1800','Síntomas, hallazgos anormales clínicos/de laboratorio'],
+ ['2000','Causas externas de morbilidad y de mortalidad'],['1500','Embarazo, parto y puerperio'],['1600','Afecciones originadas en el período perinatal'],
+ ['1700','Malformaciones congénitas, deformidades y anomalías cromosómicas'],['1900','Lesiones, envenenamientos'],['2100','Factores que influyen en el estado de salud y contacto con los servicios de salud']]
+ .map(([c,l])=>c+' · '+l).concat(['Ninguna de las anteriores']);
+const KCAL = ['< 500 kcal','500 - 999 kcal','1000 - 1499 kcal','1500 - 1999 kcal','>= 2000 kcal','No determinado','No lo sé'];
+function plate(f){ // f: fracción consumida
+  const r=18, cx=22, cy=22; let path='';
+  if (f>=1) path=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#0F7C7C"/>`;
+  else if (f>0){ const a=2*Math.PI*f, x=cx+r*Math.sin(a), y=cy-r*Math.cos(a); path=`<path d="M${cx},${cy} L${cx},${cy-r} A${r},${r} 0 ${f>.5?1:0},1 ${x},${y} Z" fill="#0F7C7C"/>`; }
+  return `<svg class="plate" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="#fff" stroke="#9aa3b2" stroke-width="2"/>${path}</svg>`;
+}
+const isSurg = ctx => ctx.unidad && ctx.unidad.tipo === 'quirurgica';
+const consOK = D => D['Consentimiento informado'] === 'Sí';
+
+// Encabezados comunes
+const H_UNIDAD = {id:'unidad', t:'unidad', k:'Unidad', l:'Unidad', req:true};
+const H_PAC = {id:'pac', t:'paciente', k:'Paciente N°', l:'Paciente número', req:true, h:'Número correlativo dentro de la unidad (1, 2, 3…). El mismo número se usa en las hojas 2 y 3 y en el seguimiento a 30 días.'};
+const H_FECHA = {id:'fecha', t:'date', k:'Fecha', l:'Fecha', def:'nday'};
+
+const FORMS = {
+ hospital: {
+  title:'Hoja del Hospital', short:'Hospital', tag:'1 por hospital', cls:'t-navy', ic:'🏥', sheet:'hospital',
+  who:'Coordinación (Lic. a cargo)', time:'≈ 10 min',
+  intro:'Se completa UNA sola vez para todo el hospital. Datos de estructura: camas, ingresos del año pasado, personal y protocolos.',
+  pages:[
+   {t:'Datos generales', qs:[ H_FECHA,
+     {id:'centro', t:'text', k:'Código del Centro', l:'Código del Centro', def:'centro'},
+     {id:'H1', t:'num', k:'H1 Camas totales del hospital', l:'Número total de camas en el hospital'},
+     {id:'H2', t:'num', k:'H2 Ingresos año pasado', l:'Número total de ingresos en el hospital el año pasado'} ]},
+   {t:'Personal', qs:[
+     {id:'H3', t:'numgrid', k:'H3 Personal', l:'Número total de personal en el hospital',
+      rows:['Total de médicos','Médicos especialistas','Médicos no especialistas','Enfermeras','Dietistas','Nutricionistas','Farmacéuticos','Personal de cocina'],
+      cols:['Número total','Equivalentes a tiempo completo']} ]},
+   {t:'Protocolos', qs:[
+     {id:'H4', t:'radio', k:'H4 Protocolo de atención nutricional', l:'¿Tiene el hospital un protocolo de atención nutricional?', o:SNS},
+     {id:'H5', t:'check', k:'H5 Guías/actividades nutricionales', l:'¿Qué guías nutricionales o actividades rutinarias relacionadas con la nutrición existen en su hospital?',
+      o:['Se encuentra disponible formación en nutrición','Se encuentra disponible un comité de nutrición','Se registran y reportan los indicadores de calidad a nivel nacional/regional',
+         'Se utilizan los indicadores de calidad para la evaluación comparativa interna en el hospital','Se aplican cuestionarios o encuestas para evaluar el servicio de alimentación y la comida ofrecida en el hospital']} ]},
+   {t:'Codificación', qs:[
+     {id:'H6x', t:'check', k:'H6 Sin información de facturación', l:'¿Cuáles son los diagnósticos disponibles y que se utilizan de rutina en su hospital para fines de facturación y reembolso?', o:['No hay información disponible sobre facturación/finanzas/control']},
+     {id:'H6', t:'grid', k:'H6', l:'Para cada ítem, marque una opción', show:D=>!(D['H6 Sin información de facturación']||[]).length,
+      rows:['Soporte nutricional','Suplementos nutricionales orales','Nutrición parenteral','Nutrición enteral','Recomendaciones nutricionales','Intervenciones dietéticas específicas',
+            'Cribado nutricional para la detección de desnutrición','Riesgo de desnutrición','Desnutrición (en general)','Gravedad de la malnutrición (leve, moderada, severa)'],
+      o:['Códigos disponibles','Códigos de uso habitual','No lo sé']} ]}
+  ]},
+ unidad: {
+  title:'Hoja de Unidades 1a / 1b', short:'Unidad', tag:'1 por unidad', cls:'t-gold', ic:'🏷️', sheet:'unidad',
+  who:'Jefe/a de la unidad o nutricionista', time:'≈ 15 min',
+  intro:'Se completa una vez por cada unidad participante (Clínica Médica y Cirugía). El censo de pacientes es el registrado a mediodía.',
+  pages:[
+   {t:'Unidad', qs:[ H_UNIDAD, H_FECHA, {id:'cu', t:'text', k:'Código de la Unidad', l:'Código de la Unidad', def:'codunidad'} ]},
+   {t:'1a · Categoría', qs:[
+     {id:'U1a', t:'radio', k:'1a Categoría principal', l:'Categoría principal (elija una solamente)', groups:[
+       {g:'Medicina Interna', o:['General','Cardiología','Gastroenterología y hepatología','Geriatría','Enfermedades Infecciosas','Nefrología','Oncología (incluye radioterapia)'].map(x=>'Medicina Interna – '+x)},
+       {g:'Cirugía', o:['General','Cardíaca/Vascular/Torácica','Neurocirugía','Ortopedia','Trauma','Urología','Bariátrico'].map(x=>'Cirugía – '+x)},
+       {g:'Otras', o:['Otorrinolaringología','Ginecología/Obstetricia','Neurología','Psiquiatría','Pediatría','Multidisciplinario','Cuidados crónicos','Asistencia hospitalaria a domicilio','Otros']} ]},
+     {id:'U1b', t:'grid', k:'1b ERAS', l:'Solo para unidades quirúrgicas (ERAS = Enhanced Recovery After Surgery)', show:(D,c)=>isSurg(c),
+      rows:['a) ¿Implementa ERAS?','b) ¿Tiene un protocolo ERAS?','c) ¿Tiene un equipo ERAS?','d) ¿Está auditando sus resultados/práctica de ERAS?'], o:SNS} ]},
+   {t:'Censo y personal', qs:[
+     {id:'U2', t:'num', k:'U2 Pacientes registrados a mediodía', l:'Número de pacientes registrados a mediodía'},
+     {id:'U3', t:'num', k:'U3 Capacidad total de camas', l:'Capacidad total de camas en la unidad'},
+     {id:'U4', t:'numgrid', k:'U4 Personal turno mañana', l:'Cantidad de personal programado para el turno de la mañana de hoy (excluido el personal de limpieza/temporal de nDay)',
+      rows:['Médicos','Estudiantes de Medicina','Enfermeras Profesionales','Auxiliares de Enfermería','Dietista','Nutricionista','Empleados administrativos','Otros empleados que participan en el cuidado de pacientes'],
+      cols:['Entrenado a cabalidad','En entrenamiento'], dis:['1-0','6-1']} ]},
+   {t:'Organización', qs:[
+     {id:'U5', t:'radio', k:'U5 Equipo de soporte nutricional', l:'¿Existe en su hospital un equipo de soporte nutricional?', o:SNS},
+     {id:'U6', t:'radio', k:'U6 Protocolo de atención nutricional (unidad)', l:'¿Su unidad de soporte nutricional cuenta con un protocolo de atención nutricional?', o:SNS},
+     {id:'U7', t:'radio', k:'U7 Responsable de atención nutricional', l:'¿Hay una persona en su unidad responsable de la atención nutricional?', o:SNS},
+     {id:'U8', t:'radio', k:'U8 Dietista/nutricionista disponible', l:'¿Hay un dietista, nutricionista o asistente de nutrición disponible en su unidad?', o:SNS},
+     {id:'U9', t:'radio', k:'U9 Personal de apoyo en comidas', l:'¿Existe durante las comidas personal especial de soporte para ayudar a darle la alimentación a los pacientes?', o:SNS} ]},
+   {t:'Tamización', qs:[
+     {id:'U10a', t:'radio', k:'U10 Tamización al ingreso', l:'Forma PRINCIPAL de tamización o monitoría de malnutrición — Al ingreso',
+      o:['No existe tamización rutinaria','No existen criterios fijos','Experiencia/ análisis visual solamente','Peso/ IMC solamente','Detección de Riesgo Nutricional (NRS 2002)',
+         'Malnutrition Universal Screening Tool (MUST)','Malnutrition Screening Tool (MST)','Cuestionario corto para evaluación nutricional (SNAQ)','Otro tipo de herramienta formal']},
+     {id:'U10b', t:'radio', k:'U10 Tamización durante la estancia', l:'Forma PRINCIPAL de tamización o monitoría de malnutrición — Durante la estancia hospitalaria',
+      o:['No se realiza cribado nutricional de rutina','No existen criterios fijos','Experiencia/ análisis visual solamente','Peso/ IMC solamente','Otro tipo de herramienta formal']} ]},
+   {t:'1b · Guías y rutinas', qs:[
+     {id:'U11a', t:'radio', k:'11a Usa guías/protocolos de soporte nutricional', l:'¿Utiliza de forma rutinaria guías o protocolos de soporte nutricional?', o:SN},
+     {id:'U11b', t:'radio', k:'11b Método principal', l:'En caso afirmativo, ¿cuál es el método que principalmente emplea?', show:D=>D['11a Usa guías/protocolos de soporte nutricional']==='Sí',
+      o:['Guías Internacionales','Guías Nacionales','Protocolos a nivel del hospital','Protocolos a nivel de la unidad','Protocolos individuales de atención nutricional','Otro']},
+     {id:'U12', t:'gridcheck', k:'12 Rutinas por grupo', l:'¿Qué se hace de manera rutinaria en su unidad para determinados grupos de pacientes? (marque todo lo que se realiza)',
+      rows:['Observar cuidadosamente','Desarrollar el plan de atención nutricional durante la visita hospitalaria','Desarrollar un plan individual de atención nutricional','Iniciar tratamiento/ Intervención nutricional',
+            'Consultar un experto en nutrición (dietista, nutricionista, etc.)','Consultar un profesional médico','Calcular los requerimientos energéticos','Calcular requerimientos proteicos'],
+      cols:['Con riesgo de malnutrición','Desnutridos','Todos los pacientes','Ninguno']} ]},
+   {t:'Peso y alimentación', qs:[
+     {id:'U13', t:'check', k:'13 Frecuencia de pesaje', l:'¿Cuándo se pesa a los pacientes de forma rutinaria? (marque todas las que aplican)',
+      o:['Al ingreso','Cada 24 horas','Cada 48 horas','Cada 72 horas','Semanalmente','Ocasionalmente','Cuando se solicita','Al alta hospitalaria','Nunca']},
+     {id:'U14', t:'check', k:'14 Apoyo a la alimentación', l:'¿Qué hace para apoyar una alimentación adecuada? (marque todo lo que aplica)',
+      o:['Ofrecer comidas adicionales o refrigerios entre las comidas','Ofrecer opciones de comidas','Ofrecer diferentes tamaños de porciones','Tener en cuenta la presentación de la comida',
+         'Cambiar la textura/consistencia de la comida si es necesario','Considerar las dificultades de los pacientes en la ingesta tanto de sólidos como de líquidos',
+         'Garantizar que los pacientes no sean molestados durante la hora de la comida/ política de comida protegida','Promover un ambiente positivo en la comida',
+         'Tener en cuenta preferencias culturales/ religiosas','Tener en cuenta alergias/ intolerancias','Otro']} ]},
+   {t:'Estándares y registros', qs:[
+     {id:'U15', t:'check', k:'15 Cuidados estándar', l:'¿Cuáles son los cuidados estándar relacionados con la nutrición o actividades rutinarias existentes en su unidad?',
+      o:['Existe formación en nutrición','Se realiza reporte de la información relacionada con la atención nutricional a los directivos del hospital','Se realiza registro y reporte de los indicadores de calidad a nivel nacional / regional',
+         'Se usan indicadores de calidad para la evaluación comparativa interna del hospital','Se realizan cuestionarios a los pacientes para obtener información acerca de la comida y del servicio de alimentación']},
+     {id:'U16', t:'check', k:'16 Registro en la admisión', l:'En el momento de la admisión, ¿qué se pregunta y registra? (marque todo lo que aplica)', o:['Cambio de peso','Hábitos de alimentación/dificultades','Información nutricional antes de la admisión']},
+     {id:'U17a', t:'check', k:'17a Historia clínica incluye', l:'La historia clínica del paciente tiene una sección acerca de…', o:['Indicar si el paciente está desnutrido o tiene riesgo de desnutrición','Tratamiento nutricional','No lo sé']},
+     {id:'U17b', t:'check', k:'17b Informe de alta incluye', l:'El informe de alta incluye…', o:['El tratamiento nutricional recibido durante la hospitalización','Recomendaciones nutricionales para el futuro','No lo sé']},
+     {id:'U18', t:'radio', k:'18 Folletos sobre desnutrición', l:'¿Ustedes proveen folletos acerca de la desnutrición a pacientes desnutridos/en riesgo?', o:SN},
+     {id:'U19', t:'check', k:'19 Quién llena este formato', l:'¿Quién llena este formato? (marque todo lo que aplica)', o:['El jefe del grupo','Dietista','Enfermera','Médico','Personal Administrativo','Otro']} ]}
+  ]},
+ pac2: {
+  title:'Paciente · Hojas 2a / 2b / 2c', short:'Paciente (equipo)', tag:'1 por paciente', cls:'t-teal', ic:'🩺', sheet:'pac2', ident:true,
+  who:'Equipo de salud (con la historia clínica)', time:'≈ 8–10 min por paciente',
+  intro:'Una ficha por cada paciente internado con consentimiento informado firmado. Se completa con la historia clínica y el equipo tratante. La hoja 2c aparece solo en unidades quirúrgicas.',
+  pages:[
+   {t:'Paciente', qs:[ H_UNIDAD, H_PAC, H_FECHA,
+     {id:'CI', t:'radio', k:'Consentimiento informado', l:'Consentimiento informado firmado', o:SN, req:true,
+      h:'Solo pueden participar pacientes con el consentimiento firmado (entregado el día anterior). Si es “No”, se guarda solo este dato y no se continúa.'},
+     {id:'IDB', t:'ident', l:'Datos de identificación · USO LOCAL', show:consOK} ]},
+   {t:'2a · Datos', show:consOK, qs:[
+     {id:'adm', t:'date', k:'2a Fecha de admisión', l:'Fecha de admisión'},
+     {id:'hosp', t:'radio', k:'2a Tipo de hospitalización', l:'Esta hospitalización fue:', o:['Programada','De urgencia','No lo sé']},
+     {id:'nac', t:'num', k:'2a Año de nacimiento', l:'Año de nacimiento', min:1900, max:2010},
+     {id:'gen', t:'radio', k:'2a Género', l:'Género', o:['Femenino','Masculino','Otros']},
+     {id:'peso', t:'num', k:'2a Peso (kg)', l:'Peso (kg)', unit:'kg', step:'0.1', min:20, max:300},
+     {id:'pesot', t:'radio', k:'2a Peso: estimado/cuantificado', l:'El peso fue…', o:['Estimado','Cuantificado']},
+     {id:'talla', t:'num', k:'2a Estatura (cm)', l:'Estatura (cm)', unit:'cm', min:100, max:220},
+     {id:'tallat', t:'radio', k:'2a Estatura: estimada/cuantificada', l:'La estatura fue…', o:['Estimada','Cuantificada']},
+     {id:'imc', t:'imc'} ]},
+   {t:'2a · Diagnósticos', show:consOK, qs:[
+     {id:'Q1', t:'check', k:'2a.1 Diagnóstico al ingreso', l:'1. Diagnóstico al ingreso (marque según corresponda) · CIE-10', o:ICD},
+     {id:'Q2', t:'radio', k:'2a.2 Diagnóstico principal', l:'2. Diagnóstico principal (solamente un código de los arriba mencionados)', o:ICD} ]},
+   {t:'2a · Comorbilidades', show:consOK, qs:[
+     {id:'Q3', t:'check', k:'2a.3 Comorbilidades', l:'3. ¿Cuáles son las condiciones / comorbilidades del paciente?', groups:[
+       {g:'Comorbilidades específicas', o:['Enfermedad cerebrovascular','Demencia','Trastorno depresivo mayor','Trastorno mental crónico','Infarto de miocardio','Insuficiencia cardíaca','Enfermedad pulmonar crónica',
+          'Enfermedad hepática crónica','Enfermedad renal crónica','Enfermedades/problemas GI','Enfermedades/problemas urológicos','Enfermedad musculoesquelética','Artritis','Problemas de la piel','Enfermedad vascular periférica']},
+       {g:'Comorbilidades generales', o:['Dolor','Fatiga','Infección','Diabetes','Hipertensión','Hiperlipidemia','Enfermedad endocrina','Cáncer (activo)','Historia del cáncer','Otra enfermedad crónica']},
+       {g:'Otras', o:['Otras comorbilidades','Sin comorbilidades']} ]} ]},
+   {t:'2a · Estado', show:consOK, qs:[
+     {id:'Q4', t:'radio', k:'2a.4 Ingreso previo a UCI', l:'4. Ingreso previo a la UCI durante la estancia hospitalaria actual', o:SNS},
+     {id:'Q5', t:'radio', k:'2a.5 Situación terminal', l:'5. ¿Está este paciente en una situación terminal?', o:SNS},
+     {id:'Q6', t:'radio', k:'2a.6 Estado de hidratación', l:'6. Estado de hidratación (HOY)', o:['Normal','Sobrehidratado','Deshidratado','No lo sé']},
+     {id:'Q7a', t:'num', k:'2a.7 Medicamentos orales', l:'7. Número de diferentes medicamentos (HOY) — vía oral'},
+     {id:'Q7b', t:'num', k:'2a.7 Medicamentos otra vía', l:'7. Número de diferentes medicamentos (HOY) — otra vía'},
+     {id:'Q8', t:'radio', k:'2a.8 Identificado como desnutrido/en riesgo', l:'8. ¿Había sido identificado este paciente como malnutrido o en riesgo de malnutrición?', o:['Desnutrido','En riesgo de desnutrición','No','No lo sé']} ]},
+   {t:'2b · Alimentación', show:consOK, qs:[
+     {id:'Q9', t:'check', k:'2b.9 Líquidos', l:'9. Líquidos (HOY)', o:['Solución electrolítica (NaCl, Lactato de Ringer, etc.)','Solución de Dextrosa al 5%']},
+     {id:'Q10', t:'num', k:'2b.10 N° SNO planeados', l:'10. Número de suplementos nutricionales orales (SNO) planeados para el día (HOY)'},
+     {id:'Q11', t:'grid', k:'2b.11 Ingesta', l:'11. Ingesta nutricional (HOY) — una respuesta por opción',
+      rows:['Menú normal del hospital','Menú del hospital fortificado/enriquecido','Dieta especial','Suplemento proteico/energético (SNO)','Nutrición enteral','Nutrición parenteral'], o:SNS} ]},
+   {t:'2b · Accesos', show:consOK, qs:[
+     {id:'Q12a', t:'grid', k:'2b.12a Catéteres/sondas', l:'12a. Todos los catéteres EV y sondas (HOY)',
+      rows:['Acceso Venoso Central','Acceso Venoso Periférico','Nasogástrica','Nasoyeyunal','Nasoduodenal','Enterostomía','Gastrostomía endoscópica percutánea o quirúrgica','Yeyunostomía endoscópica percutánea o quirúrgica'], o:SNS},
+     {id:'Q12b', t:'radio', k:'2b.12b Complicaciones de líneas/sondas', l:'12b. ¿Se presentaron complicaciones en las líneas IV, catéteres y/o sondas relacionadas con la nutrición? (infecciones/obstrucciones)', o:['Sí, previamente','Sí, actualmente','No','No lo sé']} ]},
+   {t:'2b · Medidas', show:consOK, qs:[
+     {id:'Q13', t:'grid', k:'2b.13 Medidas desde la admisión', l:'13. Indique si alguna de las siguientes medidas ha sido tomada para este paciente desde su admisión',
+      rows:['Se determinaron los requerimientos calóricos','Se determinaron los requerimientos proteicos','La ingesta de alimentos ha sido registrada en la historia clínica','Se desarrolló un plan de tratamiento nutricional','Se consultó un experto en nutrición','El estado de desnutrición se registró en la historia clínica'], o:SNS},
+     {id:'Q14a', t:'radio', k:'2b.14a Objetivo calórico (ayer)', l:'14a. Objetivo calórico (AYER)', o:KCAL},
+     {id:'Q14ak', t:'num', k:'2b.14a Objetivo kcal/kg', l:'…o inserte kcal/kg', unit:'kcal/kg', step:'0.1'},
+     {id:'Q14b', t:'radio', k:'2b.14b Ingesta calórica (ayer)', l:'14b. Ingesta calórica (AYER)', o:KCAL},
+     {id:'Q14bk', t:'num', k:'2b.14b Ingesta kcal/kg', l:'…o inserte kcal/kg', unit:'kcal/kg', step:'0.1'},
+     {id:'Q15', t:'radio', k:'2b.15 Evolución desde la admisión', l:'15. Desde su admisión el estado de salud del paciente ha…', o:['Mejorado','Empeorado','No ha cambiado','El paciente recién ha sido admitido','No lo sé']} ]},
+   {t:'2c · Cirugía', show:(D,c)=>consOK(D)&&isSurg(c), qs:[
+     {id:'Q16a', t:'radio', k:'2c.16a Cirugía previa a la hospitalización', l:'16a. Cirugía previa a la hospitalización actual', o:['Sí, programada','Sí, evento agudo','No']},
+     {id:'Q16ad', t:'num', k:'2c.16a Días desde la cirugía', l:'Días desde la cirugía', unit:'días', show:D=>String(D['2c.16a Cirugía previa a la hospitalización']||'').startsWith('Sí')},
+     {id:'Q16b', t:'radio', k:'2c.16b Cirugía programada en esta estancia', l:'16b. Cirugía programada durante la estancia hospitalaria actual', o:['Sí, hoy o mañana','No, después','No']},
+     {id:'Q17', t:'radio', k:'2c.17 Tipo de cirugía', l:'17. Tipo de cirugía (elección única)', o:['Operado justo después del ingreso (agudo)','Planificado tras ingreso no programado','Planificado tras ingreso programado','Ninguna de las anteriores','No lo sé','No aplicable (NA)']},
+     {id:'Q18', t:'radio', k:'2c.18 Abordaje', l:'18. Abordaje quirúrgico (elección única)', o:['Cirugía abierta incluyendo la de conversión','Cirugía mínimamente invasiva (laparoscópica, robótica, etc.)']},
+     {id:'Q19', t:'radio', k:'2c.19 Duración', l:'19. Duración de la operación', o:['Cirugía menor (<1 hora)','Cirugía mayor (>1 hora)']} ]},
+   {t:'2c · Terapia', show:(D,c)=>consOK(D)&&isSurg(c), qs:[
+     {id:'Q20', t:'radio', k:'2c.20 Órgano/procedimiento', l:'20. Órgano principal operado / procedimiento quirúrgico, previsto o realizado (elección única)',
+      o:['Esófago','Gástrico','Hígado','Páncreas','Colorrectal','Ginecología','Ginecología oncológica','Urología','Urología oncológica','Cistectomía','Bariátrica','Reemplazo de cadera','Reemplazo de rodilla','Pulmón','Cardíaco','Vascular','Otros','No lo sé']},
+     {id:'Q21', t:'radio', k:'2c.21 Indicación de terapia nutricional', l:'21. Indicación del uso de la terapia nutricional (NE, NP, SNO) (elección única)',
+      o:['Ninguna indicación','Ayuno postoperatorio planificado prolongado','Malnutrición preoperatoria','Complicación quirúrgica en curso','El paciente no come lo suficiente','Otros','No lo sé']},
+     {id:'Q22', t:'num', k:'2c.22 Días desde la terapia nutricional', l:'22. Días desde la terapia nutricional', unit:'días'} ]}
+  ]},
+ pac3: {
+  title:'Cuestionario del Paciente · 3a / 3b', short:'Paciente (cuestionario)', tag:'lo responde el paciente', cls:'t-bord', ic:'🙂', sheet:'pac3', patient:true,
+  who:'El paciente (con ayuda si la necesita)', time:'≈ 10 min',
+  intro:'El equipo elige la unidad y el número de paciente y luego entrega la tablet o el celular al paciente. Letra grande y botones amplios. Si el paciente necesita ayuda, se le leen las preguntas (marcar la pregunta 23).',
+  pages:[
+   {t:'Inicio', staff:true, qs:[ H_UNIDAD, H_PAC, H_FECHA ]},
+   {t:'Alimentación', qs:[
+     {id:'P1', t:'check', k:'3a.1 Hábitos alimentarios', l:'1. ¿Cuáles son sus hábitos alimentarios? Marque según corresponda',
+      o:['Tengo restricciones dietéticas','No tengo hábitos dietéticos especiales','Soy vegetariano','Sigo una dieta vegana','Sigo una dieta libre de gluten','Evito añadir azúcar','Evito los carbohidratos','Como una dieta baja en grasa','Soy intolerante a la lactosa','Otra dieta especial debido a alergias / intolerancias','Otro']} ]},
+   {t:'Su hogar', qs:[
+     {id:'P2', t:'radio', k:'3a.2 Residencia previa', l:'2. ¿Dónde residía antes de su actual ingreso en el hospital?', o:['En casa','En un asilo, en un hogar geriátrico o de cuidado intermedio','He sido transferido de otro hospital','Otro']},
+     {id:'P3', t:'radio', k:'3a.3 Capacidad de caminar', l:'3. En general, ¿es usted capaz de caminar?', o:['Sí','Sí, con la ayuda de alguien','Sí, con bastón, silla de ruedas, o muletas','No, tengo una silla de ruedas','No, estoy en la cama']} ]},
+   {t:'Su salud', qs:[
+     {id:'P4', t:'radio', k:'3a.4 Salud autopercibida', l:'4. En general, ¿usted diría que su salud es…?',
+      o:[['Muy buena','<span class="face">😄</span> Muy buena'],['Buena','<span class="face">🙂</span> Buena'],['Regular','<span class="face">😐</span> Regular'],['Mala','<span class="face">🙁</span> Mala'],['Muy mala','<span class="face">😞</span> Muy mala']]},
+     {id:'P5', t:'nums', k:'3a.5 Últimos 12 meses', l:'5. Durante los 12 meses anteriores a su ingreso, aproximadamente…',
+      rows:[['¿Cuántas veces ha visitado al médico?','veces'],['¿Cuántas veces ha sido ingresado en un hospital (urgencias, cualquier servicio)?','veces'],['¿Cuántas noches en total ha pasado en el hospital?','noches']]} ]},
+   {t:'Medicación', qs:[
+     {id:'P6', t:'radio', k:'3a.6 Medicamentos antes de la internación', l:'6. ¿Cuántos medicamentos diferentes toma durante el día? (antes de la hospitalización)', o:['Ninguna','1-2','3-5','Más de 5','No lo sé']},
+     {id:'P7', t:'radio', k:'3a.7 Seguro médico', l:'7. ¿Tiene seguro médico (obra social / prepaga)?', o:['Sí, seguro privado solamente','Sí, seguro social solamente','Sí, ambos','No','Prefiero no contestar']} ]},
+   {t:'Su peso', qs:[
+     {id:'P8', t:'num', k:'3a.8 Peso hace 5 años (kg)', l:'8. Su peso hace 5 años', unit:'kg', step:'0.1', nolose:true},
+     {id:'P9a', t:'radio', k:'3a.9a Pérdida de peso últimos 3 meses', l:'9a. ¿Ha perdido peso durante los últimos tres meses?', o:['Sí, intencionalmente','Sí, sin intención','No, mi peso sigue siendo el mismo','No, he ganado peso','No lo sé']},
+     {id:'P9b', t:'num', k:'3a.9b Kilos perdidos', l:'9b. En caso de pérdida de peso, ¿cuántos kilos ha perdido?', unit:'kg', step:'0.1', nolose:true, show:D=>String(D['3a.9a Pérdida de peso últimos 3 meses']||'').startsWith('Sí')},
+     {id:'P10', t:'radio', k:'3a.10 Sabía de la internación 2 días antes', l:'10. ¿Sabía que sería hospitalizado dos días antes del ingreso?', o:SN} ]},
+   {t:'Información', qs:[
+     {id:'P11', t:'grid', k:'3a.11', l:'11. Por favor indique si…', rows:['…usted fue pesado al ser ingresado','…se le informó acerca de su estado nutricional','…fue informado acerca de las opciones de soporte nutricional','…recibió un tratamiento de nutrición especial'], o:SNS},
+     {id:'P12', t:'radio', k:'3a.12 Ingesta semana previa', l:'12. ¿Cómo comió la semana anterior a estar en el hospital?', o:['Más de lo normal','Normal','Aproximadamente unos 3/4 de lo normal','Aproximadamente la mitad de lo normal','Aproximadamente entre un cuarto y casi nada']} ]},
+   {t:'La comida de hoy', qs:[
+     {id:'P13a', t:'radio', k:'3b.13a Ingesta comida principal HOY', l:'13a. ¿Qué cantidad ha comido en la comida principal que le ha sido ofrecida en el hospital HOY?',
+      o:[['Casi todo',plate(1)+' Casi todo'],['1/2',plate(.5)+' La mitad'],['1/4',plate(.25)+' Un cuarto'],['Nada',plate(0)+' Nada']]},
+     {id:'P13b', t:'radio', k:'3b.13b Porción solicitada', l:'13b. La porción de la comida que solicitó HOY era…', o:['Normal','Menor','Mayor','No lo sé']} ]},
+   {t:'Satisfacción', qs:[
+     {id:'P14', t:'radio', k:'3b.14 Satisfacción con la comida', l:'14. En general, ¿qué tan satisfecho está usted con la comida en el hospital?', o:['Muy satisfecho','Algo satisfecho','Neutral','No satisfecho','Muy poco satisfecho','No lo sé']},
+     {id:'P15', t:'radio', k:'3b.15 Ayuda para comer hoy', l:'15. ¿Recibió usted alguna ayuda para comer hoy día?', o:['Sí, por parte de familiares o amigos','Sí, por parte de personal hospitalario','No']},
+     {id:'P16', t:'radio', k:'3b.16 Comió sin interrupciones', l:'16. ¿Ha podido comer sin interrupciones en el día de hoy?', o:SN} ]},
+   {t:'Si no comió todo', qs:[
+     {id:'P17', t:'check', k:'3b.17 Motivos de no comer todo', l:'17. En caso de no haber comido todo su plato, indíquenos por qué (marque todo lo que corresponda)',
+      show:D=>D['3b.13a Ingesta comida principal HOY']!=='Casi todo',
+      o:['No me gustó el tipo de comida ofrecida','No me gustó el olor de la comida ofrecida','No me gustó el sabor de la comida ofrecida','La comida no respeta mis preferencias culturales/religiosas',
+         'La comida estaba demasiado caliente','La comida estaba demasiado fría','Debido a alergia/ intolerancia','No tenía hambre a la hora que fue ofrecida la comida','Tengo menos apetito de lo habitual',
+         'Tengo problemas para tragar o masticar','Normalmente como menos de lo que me sirven','Tuve náuseas / vómito','Estaba demasiado cansado','No puedo comer sin ayuda','No se me permitía comer',
+         'Tuve una prueba, un procedimiento o una cirugía y no pude comer','No recibí la comida solicitada']},
+     {id:'P17x', t:'info', show:D=>D['3b.13a Ingesta comida principal HOY']==='Casi todo', l:'Comió casi todo su plato: puede pasar a la siguiente sección.'} ]},
+   {t:'Bebidas', qs:[
+     {id:'P18', t:'nums', k:'3b.18 Vasos/tazas 24 h', l:'18. Número de vasos/tazas de bebidas que consumió durante las últimas 24 horas',
+      rows:[['Agua','vasos'],['Té','tazas'],['Café','tazas'],['Leche','vasos'],['Jugo de frutas','vasos'],['Bebidas no alcohólicas','vasos'],['Suplemento nutricional oral','unid.'],['Otro','vasos']]} ]},
+   {t:'Otras comidas', qs:[
+     {id:'P19a', t:'radio', k:'3b.19a Comió otra comida', l:'19a. ¿Comió usted alguna otra comida aparte de la ofrecida por el hospital en el día de hoy?', o:SN},
+     {id:'P19b', t:'check', k:'3b.19b Qué comió', l:'19b. En caso afirmativo, ¿qué comió?', show:D=>D['3b.19a Comió otra comida']==='Sí',
+      o:['Colaciones dulces','Colaciones saladas','Comida casera','Fruta','Leche / derivados','Comida ordenada / restaurante','Sándwich','Otro']},
+     {id:'P20', t:'radio', k:'3b.20 Cambio de ingesta desde el ingreso', l:'20. ¿Cómo ha cambiado su ingesta de alimentos desde que fue ingresado en el hospital?', o:['Aumentó','Disminuyó','Está igual','No lo sé']} ]},
+   {t:'Cómo se siente', qs:[
+     {id:'P21', t:'radio', k:'3b.21 Hoy me siento', l:'21. HOY me siento…', o:['Más fuerte que en el día de la admisión','Más débil que en el día de la admisión','Estoy igual que en el día de la admisión','He ingresado hoy','No lo sé']},
+     {id:'P22', t:'radio', k:'3b.22 Camina sin ayuda hoy', l:'22. ¿Puede caminar sin ayuda en el día de HOY?', o:['Sí','No, sólo con ayuda','No, me encuentro en la cama']},
+     {id:'P23', t:'radio', k:'3b.23 Lo ayudaron a llenar', l:'23. ¿Lo han ayudado a llenar este cuestionario?', o:SN} ]}
+  ]},
+ seg: {
+  title:'Resultado a 30 días', short:'Seguimiento 30 d', tag:'a partir del 12/12', cls:'t-navy', ic:'📅', sheet:'seg',
+  who:'Nutricionista / coordinación', time:'≈ 3 min por paciente',
+  intro:'Resultado del paciente 30 días después del nutritionDay. Usá la lista del Panel (con PIN) para ver el DNI y buscar la historia clínica. Esta información es para cargarla en la base de datos nutritionDay.',
+  pages:[
+   {t:'Paciente', qs:[ H_UNIDAD, H_PAC, {id:'fecha', t:'date', k:'Fecha', l:'Fecha del nutritionDay', def:'nday'} ]},
+   {t:'Resultado', qs:[
+     {id:'S1', t:'date', k:'30d Fecha de aprobación del alta', l:'Fecha de aprobación del alta', h:'Dejar vacío si continúa internado.'},
+     {id:'S2', t:'text', k:'30d Diagnóstico al alta (CIE-10)', l:'Diagnóstico al alta (código CIE-10 completo o código de capítulo)', list:'icdlist', h:'Ej.: K85.1, o el código de capítulo 1100 (sistema digestivo).'},
+     {id:'S3', t:'text', k:'30d Códigos CIE-10 adicionales', l:'Códigos CIE-10 adicionales (máximo 6, separados por coma, en el orden de la historia clínica)'},
+     {id:'S4', t:'radio', k:'30d Salida / egreso (código)', l:'Salida / egreso hospitalario',
+      o:['1 Todavía en el hospital','2 Transferido a otro hospital','3 Trasladado a cuidados de larga estancia','4 Rehabilitación','5 Alta domiciliaria','6 Muerte','7 Otros']},
+     {id:'S5', t:'radio', k:'30d Readmitido desde nDay (código)', l:'Readmitido desde nDay',
+      o:['1 No','2 Sí, programada en el mismo hospital','3 Sí, no programada en el mismo hospital','4 Sí, programada en un hospital diferente','5 Sí, no programada en un hospital diferente','6 No lo sé']},
+     {id:'S6', t:'radio', k:'30d Ingresado en UCI', l:'Ingresado en UCI en los 30 días siguientes al nDay', o:SN},
+     {id:'S7', t:'radio', k:'30d Reoperado', l:'Reoperado después de nDay bajo anestesia general', o:SN},
+     {id:'S8', t:'num', k:'30d Días después de nDay', l:'¿Cuántos días después de nDay? (alta / evento)', unit:'días'} ]}
+  ]}
+};
+
+/* =====================================================================
+   4. ESTADO Y UTILIDADES
+   ===================================================================== */
+let CFG = null, PIN = null, ROUTE = '', CUR = null;   // CUR = {fid, page, D, ident}
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const optObj = x => Array.isArray(x) ? {v:x[0], d:x[1]} : {v:x, d:esc(x)};
+function modal(msg, withInput){
+  return new Promise(res=>{
+    const w=document.createElement('div');
+    w.style.cssText='position:fixed;inset:0;background:rgba(20,26,40,.45);z-index:60;display:grid;place-items:center;padding:16px';
+    w.innerHTML=`<div class="card" style="max-width:420px;width:100%"><p style="margin:0 0 12px;font-weight:600;color:var(--navy)">${esc(msg)}</p>
+      ${withInput?'<input type="password" id="mdin" autocomplete="off" style="margin-bottom:12px">':''}
+      <div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn ghost" id="mdno">Cancelar</button><button class="btn pri" id="mdok">Aceptar</button></div></div>`;
+    document.body.appendChild(w);
+    const inp=w.querySelector('#mdin'); if(inp){ inp.focus(); inp.onkeydown=e=>{ if(e.key==='Enter') w.querySelector('#mdok').click(); }; }
+    w.querySelector('#mdok').onclick=()=>{ const v=inp?inp.value:true; w.remove(); res(v); };
+    w.querySelector('#mdno').onclick=()=>{ w.remove(); res(withInput?null:false); };
+  });
+}
+function doPrint(){ try{ window.print(); }catch(e){} if(DEMO) setTimeout(()=>toast('Si no se abrió el diálogo de impresión: en la app instalada el botón genera el PDF.'),300); }
+function toast(msg, err){ const t=document.createElement('div'); t.className='toast'+(err?' err':''); t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(), err?5200:2800); }
+function unitByName(n){ return (CFG && CFG.unidades || []).find(u=>u.nombre===n) || null; }
+function ctxOf(D){ return {unidad: unitByName(D['Unidad'])}; }
+function colKeys(q){
+  if (q.t==='grid'||q.t==='gridcheck') return q.rows.map(r=>q.k+' · '+r);
+  if (q.t==='numgrid') { const ks=[]; q.rows.forEach(r=>q.cols.forEach(c=>ks.push(q.k+' · '+r+' · '+c))); return ks; }
+  if (q.t==='nums') return q.rows.map(r=>q.k+' · '+r[0]);
+  if (q.k) return [q.k];
+  return [];
+}
+function isAnswered(q, D){ return colKeys(q).some(k=>{ const v=D[k]; return Array.isArray(v) ? v.length>0 : (v!==undefined && v!==null && v!==''); }); }
+function visiblePages(f, D){ const c=ctxOf(D); return f.pages.filter(p=>!p.show || p.show(D,c)); }
+function visibleQs(p, D){ const c=ctxOf(D); return p.qs.filter(q=>!q.show || q.show(D,c)); }
+function draftKey(fid){ return 'ndhpf_draft_'+fid; }
+function saveDraft(){ if(CUR) LS.set(draftKey(CUR.fid), {D:CUR.D, page:CUR.page, ident:CUR.ident}); }
+
+/* ---- cola de envíos sin conexión ---- */
+function queue(){ return LS.get('ndhpf_queue', []); }
+function setQueue(q){ LS.set('ndhpf_queue', q); paintQueue(); }
+function paintQueue(){ const n=queue().length, c=$('#qchip'); c.style.display=n?'':'none'; c.textContent = n+' pendiente'+(n>1?'s':'')+' de envío ⟳'; }
+let flushing=false;
+async function flushQueue(manual){
+  if (flushing) return; const q=queue(); if(!q.length){ if(manual) toast('No hay envíos pendientes'); return; }
+  flushing=true; const rest=[];
+  for (const it of q){ try{ await api('guardar', it.tipo, it.rec, it.ident||null); }catch(e){ rest.push(it); } }
+  flushing=false; setQueue(rest);
+  if (manual || rest.length<q.length) toast(rest.length ? `Se enviaron ${q.length-rest.length}; quedan ${rest.length}` : 'Todos los registros pendientes fueron enviados ✓', !!rest.length);
+}
+window.addEventListener('online', ()=>flushQueue());
+setInterval(()=>flushQueue(), 45000);
+
+/* =====================================================================
+   5. RUTEO
+   ===================================================================== */
+function go(r){ location.hash = r; }
+window.addEventListener('hashchange', route);
+function route(){
+  ROUTE = location.hash.replace(/^#/, '');
+  const [a, b] = ROUTE.split('/');
+  $('#bar').style.display='none'; window.scrollTo(0,0);
+  if (!a) return viewHome();
+  if (FORMS[a]) return openForm(a, b==='nuevo');
+  if (a==='panel') return viewPanel();
+  if (a==='seguimiento') return viewSeguimiento();
+  if (a==='ayuda') return viewAyuda();
+  if (a==='ajustes') return viewAjustes();
+  viewHome();
+}
+
+/* =====================================================================
+   6. INICIO
+   ===================================================================== */
+function viewHome(){
+  CUR=null;
+  const order=['pac2','pac3','unidad','hospital','seg'];
+  $('#app').innerHTML = `
+   <div class="logos" id="logos"><img id="lg1" alt="Logo del hospital"><img id="lg2" alt="Logo del servicio de nutrición"></div>
+   <h1>${esc(CFG.hospital||'Hospital')}</h1>
+   ${APPCFG.NOMBRE_SERVICIO?`<div class="unit" style="margin-top:-2px">${esc(APPCFG.NOMBRE_SERVICIO)}</div>`:''}
+   <p class="lead">nutritionDay · ${fmtDate(CFG.fecha)} · Registro digital sin papel. Elegí qué vas a completar.</p>
+   ${DEMO?`<div class="hint bord"><b>Modo demostración.</b> Los datos se guardan solo en este dispositivo. Para conectar la planilla de Google, cargar la URL de la API en config.js (ver manual) o en <a href="#ajustes">Conexión con la planilla</a>.</div>`:''}
+   <div class="card install" id="installcard" style="display:none;margin-bottom:12px"></div>
+   <div class="grid-cards">
+    ${order.map(id=>{ const f=FORMS[id]; return `<a class="card" href="#${id}"><div class="ic ${f.cls}">${f.ic}</div><h3>${f.short}</h3><p>${esc(f.title)} · ${f.time}</p><span class="who">${esc(f.tag)}</span></a>`; }).join('')}
+    <a class="card" href="#panel"><div class="ic t-gold">📊</div><h3>Panel de resultados</h3><p>Resumen automático, avance por unidad, informe imprimible</p><span class="who">requiere PIN</span></a>
+    <a class="card" href="#ayuda"><div class="ic t-navy">❓</div><h3>Guía rápida</h3><p>Cómo se organiza el día y qué completa cada uno</p><span class="who">2 min de lectura</span></a>
+   </div>
+   <p class="unit" style="text-align:center;margin-top:16px"><a href="#ajustes" style="color:var(--mut)">⚙ Conexión con la planilla</a></p>
+   <div class="foot">Basado en los cuestionarios nutritionDay en el Hospital (2024 v1, nutritionDay worldwide · ESPEN · MedUni Viena, CC BY-NC-ND).<br>Herramienta interna de captura; los datos se cargan luego en la base oficial nutritionDay.</div>`;
+  afterHome();
+}
+function afterHome(){ paintLogos(); paintInstall(); }
+function fmtDate(s){ if(!s) return '—'; const m=String(s).match(/^(\d{4})-(\d{2})-(\d{2})/); return m? `${m[3]}/${m[2]}/${m[1]}` : s; }
+
+function viewAyuda(){
+  $('#app').innerHTML = `
+  <h1>Guía rápida del día</h1>
+  <p class="lead">Todo se completa en el celular, tablet o computadora. No hace falta imprimir los cuestionarios.</p>
+  <div class="card"><h3>Antes (miércoles 11)</h3><ol class="steps">
+   <li>Entregar el consentimiento informado a todos los pacientes internados en las unidades participantes. <b>La firma sigue siendo en papel.</b></li>
+   <li>La coordinación completa la <b>Hoja del Hospital</b> (una sola vez).</li></ol></div><br>
+  <div class="card"><h3>El día (jueves 12)</h3><ol class="steps">
+   <li>Cada unidad completa su <b>Hoja de Unidad 1a/1b</b> (censo a mediodía).</li>
+   <li>Por cada paciente con consentimiento: <b>Paciente (equipo)</b> = hojas 2a/2b/2c, con la historia clínica. Se registra el DNI en el recuadro de uso local.</li>
+   <li>Después del almuerzo: <b>Paciente (cuestionario)</b> = hojas 3a/3b. Se elige unidad y número, y se entrega el dispositivo al paciente (o se le leen las preguntas).</li>
+   <li>Usar <b>el mismo número de paciente</b> en las hojas 2 y 3.</li>
+   <li>Revisar el <b>Panel</b> al final del día: muestra qué pacientes tienen fichas incompletas.</li></ol></div><br>
+  <div class="card"><h3>Después (a 30 días)</h3><ol class="steps">
+   <li>Desde el Panel → <b>Seguimiento 30 días</b>: lista con DNI para buscar la historia clínica.</li>
+   <li>Cargar el resultado de cada paciente.</li>
+   <li>Transcribir a la base oficial nutritionDay desde la planilla o desde la “ficha” de cada paciente.</li></ol></div>
+  <div class="hint teal" style="margin-top:14px"><b>Sin señal en la sala:</b> la app guarda el registro en el dispositivo y lo envía sola cuando vuelve la conexión (aparece un aviso amarillo arriba). No cierres la pestaña hasta que desaparezca.</div>
+  <div class="hint">Se puede corregir un registro: abrí el mismo formulario, elegí la misma unidad y número y tocá <b>“Cargar datos guardados”</b>. Al guardar, se actualiza (no se duplica).</div>`;
+}
+
+/* =====================================================================
+   7. FORMULARIOS
+   ===================================================================== */
+function openForm(fid, fresh, preset){
+  const f=FORMS[fid];
+  let st = fresh ? null : LS.get(draftKey(fid), null);
+  CUR = {fid, page:0, D:{}, ident:{}};
+  if (st && st.D){ CUR.D=st.D; CUR.page=st.page||0; CUR.ident=st.ident||{}; }
+  if (preset) Object.assign(CUR.D, preset);
+  applyDefaults(f);
+  renderForm();
+}
+function applyDefaults(f){
+  f.pages.forEach(p=>p.qs.forEach(q=>{
+    if (q.def && (CUR.D[q.k]===undefined || CUR.D[q.k]==='')){
+      if (q.def==='nday') CUR.D[q.k]=CFG.fecha||'';
+      if (q.def==='centro') CUR.D[q.k]=CFG.centro||'';
+    }
+  }));
+  if (f.sheet!=='hospital' && !CUR.D['Unidad'] && CFG.unidades.length===1) CUR.D['Unidad']=CFG.unidades[0].nombre;
+  if (CFG.centro && !CUR.D['Código del Centro'] && f.sheet!=='hospital') CUR.D['Código del Centro']=CFG.centro;
+  syncUnitCode();
+}
+function syncUnitCode(){ const u=unitByName(CUR.D['Unidad']); if(u && u.codigo && !CUR.D['Código de la Unidad']) CUR.D['Código de la Unidad']=u.codigo; }
+
+function renderForm(){
+  const f=FORMS[CUR.fid], D=CUR.D, pages=visiblePages(f, D);
+  if (CUR.page>pages.length) CUR.page=pages.length;
+  const onReview = CUR.page===pages.length;
+  const p = pages[CUR.page];
+  const pct = Math.round(100*CUR.page/pages.length);
+  const isPatientPage = f.patient && p && !p.staff;
+  $('#app').className = isPatientPage ? 'patient' : '';
+  $('#app').innerHTML = `
+   <div class="fhead"><span class="badge ${f.cls}">${f.ic} ${esc(f.tag)}</span><span class="unit">${esc(f.who)} · ${f.time}</span></div>
+   <h1>${esc(f.title)}</h1>
+   ${CUR.page===0?`<p class="lead">${esc(f.intro)}</p>`:''}
+   ${(D['Unidad']||D['Paciente N°'])&&CUR.page>0?`<div class="unit"><b>${esc(D['Unidad']||'')}</b>${D['Paciente N°']?' · Paciente N° <b>'+esc(D['Paciente N°'])+'</b>':''}</div>`:''}
+   <div class="prog"><i style="width:${onReview?100:pct}%"></i></div>
+   <div class="pnav noprint">${pages.map((pg,i)=>`<button class="${i===CUR.page?'on':''} ${i<CUR.page?'done':''}" onclick="jump(${i})">${i+1}. ${esc(pg.t)}</button>`).join('')}
+     <button class="${onReview?'on':''}" onclick="jump(${pages.length})">✓ Revisar y guardar</button></div>
+   <div id="qs">${onReview ? reviewHTML(f, D) : visibleQs(p, D).map(q=>qHTML(q, D)).join('')}</div>`;
+  bindInputs();
+  const bar=$('#bar'), bi=$('#barin'); bar.style.display='';
+  if (onReview){
+    bi.innerHTML = `<button class="btn ghost" onclick="jump(CUR.page-1)">← Atrás</button><span class="grow"></span>
+      <button class="btn pri" id="savebtn" onclick="submitForm()">Guardar ${isPatientPage||f.patient?'respuestas':'registro'}</button>`;
+  } else {
+    bi.innerHTML = `${CUR.page>0?'<button class="btn ghost" onclick="jump(CUR.page-1)">← Atrás</button>':`<button class="btn ghost" onclick="go(\'\')">Inicio</button>`}
+      <span class="grow"></span>
+      ${CUR.page===0 && !f.patient && f.sheet!=='hospital' ? '<button class="btn sm ghost" onclick="loadExisting()">Cargar datos guardados</button>':''}
+      ${CUR.page===0 && f.sheet==='hospital' ? '<button class="btn sm ghost" onclick="loadExisting()">Cargar datos guardados</button>':''}
+      <button class="btn navy" onclick="next()">${f.patient&&CUR.page===0?'Entregar al paciente →':'Siguiente →'}</button>`;
+  }
+}
+async function jump(i){ if(i>CUR.page && !(await validatePage())) return; CUR.page=Math.max(0,i); saveDraft(); renderForm(); window.scrollTo(0,0); }
+function next(){ jump(CUR.page+1); }
+async function validatePage(){
+  const f=FORMS[CUR.fid], pages=visiblePages(f, CUR.D), p=pages[CUR.page]; if(!p) return true;
+  for (const q of visibleQs(p, CUR.D)){
+    if (q.req && !isAnswered(q, CUR.D)){ toast('Falta completar: '+q.l, true); return false; }
+    if (q.t==='num' && q.k && CUR.D[q.k]!=='' && CUR.D[q.k]!=null && CUR.D[q.k]!=='No lo sé'){
+      const v=Number(CUR.D[q.k]);
+      if ((q.min!=null && v<q.min) || (q.max!=null && v>q.max)){
+        if(!(await modal(`El valor ${v} en “${q.l}” parece fuera de rango (${q.min}–${q.max}). ¿Continuar igual?`))) return false;
+      }
+    }
+  }
+  return true;
+}
+
+function qHTML(q, D){
+  const ans = isAnswered(q, D) ? ' answered' : '';
+  const code = q.k && /^(\d|U\d|H\d|30d)/.test(q.k) ? '' : '';
+  const head = `<div class="ql">${esc(q.l||'')}${q.req?' <span style="color:var(--bord)">*</span>':''}</div>${q.h?`<div class="qh">${esc(q.h)}</div>`:''}`;
+  switch(q.t){
+   case 'info': return `<div class="hint teal">${esc(q.l)}</div>`;
+   case 'imc': return `<div id="imcbox">${imcHTML(D)}</div>`;
+   case 'unidad': return `<div class="q${ans}">${head}<div class="opts">${CFG.unidades.map(u=>`<button type="button" class="opt ${D[q.k]===u.nombre?'sel':''}" data-k="${esc(q.k)}" data-v="${esc(u.nombre)}" data-m="radio">${esc(u.nombre)}${u.tipo==='quirurgica'?' <small>(quirúrgica)</small>':''}</button>`).join('')}</div>
+      ${!CFG.unidades.length?'<div class="hint bord">No hay unidades configuradas. Completar la hoja Config.</div>':''}</div>`;
+   case 'paciente': return `<div class="q${ans}">${head}<div class="inl"><input type="text" inputmode="numeric" data-k="${esc(q.k)}" value="${esc(D[q.k]??'')}" placeholder="Ej.: 1">
+      <button type="button" class="btn sm ghost" onclick="suggestNum()">Sugerir siguiente</button></div></div>`;
+   case 'ident': return `<div class="q idbox">${head}
+      <div class="qh">Estos datos NO forman parte de nutritionDay. Se guardan en una hoja separada y protegida, solo para buscar la historia clínica y hacer el seguimiento a 30 días.</div>
+      <div class="inl" style="flex-wrap:wrap"><div style="flex:1;min-width:160px"><div class="unit">DNI</div><input type="text" inputmode="numeric" data-ident="dni" value="${esc(CUR.ident.dni||'')}" placeholder="Sin puntos"></div>
+      <div style="flex:1;min-width:140px"><div class="unit">Cama / habitación</div><input type="text" data-ident="cama" value="${esc(CUR.ident.cama||'')}"></div></div></div>`;
+   case 'text': return `<div class="q${ans}">${head}<input type="text" data-k="${esc(q.k)}" value="${esc(D[q.k]??'')}" ${q.list?`list="${q.list}"`:''}>
+      ${q.list?`<datalist id="${q.list}">${ICD.slice(0,-1).map(x=>`<option value="${esc(x.slice(0,4))}">${esc(x)}</option>`).join('')}</datalist>`:''}</div>`;
+   case 'date': return `<div class="q${ans}">${head}<input type="date" data-k="${esc(q.k)}" value="${esc(D[q.k]??'')}"></div>`;
+   case 'num': {
+     const nl = D[q.k]==='No lo sé';
+     return `<div class="q${ans}">${head}<div class="inl"><input type="number" inputmode="decimal" step="${q.step||'1'}" data-k="${esc(q.k)}" value="${nl?'':esc(D[q.k]??'')}" ${nl?'disabled':''}>
+      ${q.unit?`<span class="unit">${esc(q.unit)}</span>`:''}
+      ${q.nolose?`<button type="button" class="opt ${nl?'sel':''}" data-k="${esc(q.k)}" data-v="No lo sé" data-m="radio">No lo sé</button>`:''}</div></div>`;
+   }
+   case 'radio': case 'check': {
+     const m = q.t==='check'?'check':'radio', cur=D[q.k];
+     const one = o=>{ const x=optObj(o); const sel = m==='check' ? (cur||[]).includes(x.v) : cur===x.v;
+       return `<button type="button" class="opt ${m==='check'?'chk':''} ${sel?'sel':''}" data-k="${esc(q.k)}" data-v="${esc(x.v)}" data-m="${m}">${x.d}</button>`; };
+     const body = q.groups ? q.groups.map(g=>`<div class="grp">${esc(g.g)}</div><div class="opts">${g.o.map(one).join('')}</div>`).join('') : `<div class="opts">${q.o.map(one).join('')}</div>`;
+     return `<div class="q${ans}">${head}${body}</div>`;
+   }
+   case 'grid': return `<div class="q${ans}">${head}${q.rows.map(r=>{ const k=q.k+' · '+r; return `<div class="row"><div class="rl">${esc(r)}</div><div class="opts">${q.o.map(o=>`<button type="button" class="opt ${D[k]===o?'sel':''}" data-k="${esc(k)}" data-v="${esc(o)}" data-m="radio">${esc(o)}</button>`).join('')}</div></div>`; }).join('')}</div>`;
+   case 'gridcheck': return `<div class="q${ans}">${head}${q.rows.map(r=>{ const k=q.k+' · '+r, cur=D[k]||[]; return `<div class="row"><div class="rl">${esc(r)}</div><div class="opts">${q.cols.map(o=>`<button type="button" class="opt chk ${cur.includes(o)?'sel':''}" data-k="${esc(k)}" data-v="${esc(o)}" data-m="check">${esc(o)}</button>`).join('')}</div></div>`; }).join('')}</div>`;
+   case 'numgrid': return `<div class="q${ans}">${head}<table class="ng"><tr><th></th>${q.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>
+      ${q.rows.map((r,ri)=>`<tr><td>${esc(r)}</td>${q.cols.map((c,ci)=>{ const k=q.k+' · '+r+' · '+c, dis=(q.dis||[]).includes(ri+'-'+ci);
+        return `<td><input type="number" inputmode="decimal" step="any" data-k="${esc(k)}" value="${dis?'':esc(D[k]??'')}" ${dis?'disabled':''}></td>`; }).join('')}</tr>`).join('')}</table></div>`;
+   case 'nums': return `<div class="q${ans}">${head}<table class="ng">${q.rows.map(([r,u])=>{ const k=q.k+' · '+r; return `<tr><td>${esc(r)}</td><td style="width:110px"><input type="number" inputmode="numeric" min="0" data-k="${esc(k)}" value="${esc(D[k]??'')}"></td><td class="unit" style="width:60px">${esc(u)}</td></tr>`; }).join('')}</table></div>`;
+  }
+  return '';
+}
+function imcHTML(D){
+  const w=Number(D['2a Peso (kg)']), h=Number(D['2a Estatura (cm)'])/100;
+  if (!(w>0 && h>0)) return '';
+  return `<div class="hint teal">IMC calculado: <b>${(w/(h*h)).toFixed(1)} kg/m²</b> (solo de referencia; no forma parte del cuestionario).</div>`;
+}
+function bindInputs(){
+  document.querySelectorAll('#qs .opt[data-k]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k, v=b.dataset.v, m=b.dataset.m;
+    if (m==='check'){ const a=Array.isArray(CUR.D[k])?CUR.D[k].slice():[]; const i=a.indexOf(v); i>=0?a.splice(i,1):a.push(v); CUR.D[k]=a; }
+    else CUR.D[k] = CUR.D[k]===v ? '' : v;
+    if (k==='Unidad'){ CUR.D['Código de la Unidad']=''; syncUnitCode(); }
+    saveDraft(); const y=window.scrollY; renderForm(); window.scrollTo(0,y);
+  });
+  document.querySelectorAll('#qs input[data-k]').forEach(inp=>{
+    inp.oninput=()=>{ CUR.D[inp.dataset.k]=inp.value; saveDraft(); const qd=inp.closest('.q'); if(qd) qd.classList.toggle('answered', inp.value!==''); };
+    if(/Peso \(kg\)|Estatura \(cm\)/.test(inp.dataset.k)) inp.addEventListener('input', ()=>{ const b=$('#imcbox'); if(b) b.innerHTML=imcHTML(CUR.D); });
+  });
+  document.querySelectorAll('#qs input[data-ident]').forEach(inp=>{ inp.oninput=()=>{ CUR.ident[inp.dataset.ident]=inp.value.trim(); saveDraft(); }; });
+}
+async function suggestNum(){
+  if(!CUR.D['Unidad']) return toast('Primero elegí la unidad', true);
+  try{ const n=await api('siguientePaciente', CUR.D['Unidad']); CUR.D['Paciente N°']=String(n); saveDraft(); renderForm(); }catch(e){ toast('No se pudo consultar: '+(e.message||e), true); }
+}
+async function loadExisting(){
+  const f=FORMS[CUR.fid], D=CUR.D;
+  if (f.sheet!=='hospital' && !D['Unidad']) return toast('Elegí la unidad', true);
+  if (['pac2','pac3','seg'].includes(f.sheet) && !D['Paciente N°']) return toast('Escribí el número de paciente', true);
+  try{
+    const r = await api('obtener', f.sheet, D['Unidad']||'', D['Paciente N°']||'');
+    if(!r) return toast('No hay datos guardados para ese registro todavía');
+    const nd={}; const allQ=f.pages.flatMap(p=>p.qs);
+    allQ.forEach(q=>colKeys(q).forEach(k=>{ if(r[k]===undefined||r[k]==='') return;
+      const multi = q.t==='check' || q.t==='gridcheck';
+      nd[k] = multi ? String(r[k]).split(' | ').filter(Boolean) : String(r[k]); }));
+    CUR.D=Object.assign({}, D, nd); saveDraft(); renderForm(); toast('Datos cargados. Podés corregir y volver a guardar.');
+  }catch(e){ toast('Error: '+(e.message||e), true); }
+}
+function fmtVal(v){ if(Array.isArray(v)) return v.length? v.map(esc).join('<br>') : ''; return esc(v??''); }
+function reviewHTML(f, D){
+  const pages=visiblePages(f, D); let total=0, done=0;
+  const secs = pages.map(p=>{
+    const rows=[];
+    visibleQs(p, D).forEach(q=>{
+      if (['info','imc','ident'].includes(q.t)) return;
+      if (['grid','gridcheck','nums','numgrid'].includes(q.t)){
+        const ks=colKeys(q); const labels = q.t==='numgrid' ? q.rows.flatMap(r=>q.cols.map(c=>r+' · '+c)) : q.t==='nums'? q.rows.map(r=>r[0]) : q.rows;
+        ks.forEach((k,i)=>{ total++; const v=fmtVal(D[k]); if(v) done++; rows.push(`<div class="rv"><div>${esc(q.l.split('—')[0].slice(0,60))} · ${esc(labels[i])}</div><div class="a ${v?'':'empty'}">${v||'—'}</div></div>`); });
+      } else { total++; const v=fmtVal(D[q.k]); if(v) done++; rows.push(`<div class="rv"><div>${esc(q.l)}</div><div class="a ${v?'':'empty'}">${v||'—'}</div></div>`); }
+    });
+    return `<h3>${esc(p.t)}</h3>${rows.join('')}`;
+  }).join('');
+  const noCons = f.sheet==='pac2' && D['Consentimiento informado']==='No';
+  return `<div class="card review">
+     ${noCons?'<div class="hint bord">Sin consentimiento informado: se guarda únicamente el registro de que el paciente no participa.</div>':''}
+     ${f.patient?'<div class="hint teal" style="font-size:17px"><b>¡Gracias por participar!</b> Si está de acuerdo con sus respuestas, toque “Guardar respuestas” y devuelva el dispositivo al equipo.</div>':''}
+     <div class="unit">Completadas <b>${done}</b> de ${total} respuestas. Las vacías se pueden dejar en blanco si no corresponden.</div>
+     ${secs}</div>`;
+}
+async function submitForm(){
+  const f=FORMS[CUR.fid], D=CUR.D, pages=visiblePages(f, D);
+  for (const p of pages) for (const q of visibleQs(p, D)) if (q.req && !isAnswered(q, D)) return toast('Falta completar: '+q.l, true);
+  const rec={};
+  const keep = new Set(['Unidad','Paciente N°','Fecha','Código del Centro','Código de la Unidad']);
+  // Solo columnas de preguntas visibles (lo oculto se guarda vacío para limpiar respuestas que ya no aplican)
+  f.pages.forEach(p=>p.qs.forEach(q=>{ const vis = (!p.show||p.show(D,ctxOf(D))) && (!q.show||q.show(D,ctxOf(D)));
+    colKeys(q).forEach(k=>{ rec[k] = vis ? (D[k]??'') : ''; }); }));
+  keep.forEach(k=>{ if(D[k]!==undefined) rec[k]=D[k]; });
+  if (f.sheet==='hospital') delete rec['Unidad'];
+  const ident = f.ident && D['Consentimiento informado']==='Sí' ? {dni:(CUR.ident.dni||'').replace(/\D/g,''), cama:CUR.ident.cama||''} : null;
+  const btn=$('#savebtn'); if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
+  try{
+    const r = await api('guardar', f.sheet, rec, ident);
+    afterSave(f, D, r.actualizado ? 'Registro actualizado ✓' : 'Registro guardado ✓', false);
+  }catch(e){
+    const msg=String(e && e.message || e);
+    if (/Falta|No permitido|desconocido/.test(msg)){ toast(msg, true); if(btn){btn.disabled=false; btn.textContent='Guardar';} return; }
+    const q=queue(); q.push({tipo:f.sheet, rec, ident, t:Date.now()}); setQueue(q);
+    afterSave(f, D, 'Sin conexión: quedó guardado en este dispositivo y se enviará solo.', true);
+  }
+}
+function afterSave(f, D, msg, queued){
+  LS.del(draftKey(CUR.fid));
+  const u=D['Unidad'], p=D['Paciente N°'];
+  $('#bar').style.display='none'; $('#app').className='';
+  $('#app').innerHTML = `<div class="card" style="text-align:center;padding:30px 18px">
+    <div style="font-size:46px">${queued?'📶':'✅'}</div><h1>${esc(msg)}</h1>
+    <p class="lead">${esc(f.title)}${u?' · '+esc(u):''}${p?' · Paciente N° '+esc(p):''}</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px">
+     ${f.sheet==='pac2'?`<button class="btn pri" onclick="startLinked('pac3')">Cuestionario del paciente (3a/3b) →</button><button class="btn navy" onclick="newPatient('pac2')">Nuevo paciente</button>`:''}
+     ${f.sheet==='pac3'?`<button class="btn navy" onclick="newPatient('pac3')">Otro paciente</button>`:''}
+     ${f.sheet==='seg'?`<button class="btn navy" onclick="go('seguimiento')">Volver a la lista</button>`:''}
+     <button class="btn ghost" onclick="go('')">Inicio</button></div></div>`;
+  CUR = {fid:f.sheet, last:{u,p}};
+}
+function startLinked(fid){ const l=CUR.last||{}; LS.del(draftKey(fid)); history.replaceState(null,'','#'+fid); openForm(fid, true, {'Unidad':l.u, 'Paciente N°':l.p}); }
+function newPatient(fid){ const l=CUR.last||{}; LS.del(draftKey(fid)); history.replaceState(null,'','#'+fid); openForm(fid, true, {'Unidad':l.u}); }
+
+/* =====================================================================
+   8. PANEL DE RESULTADOS
+   ===================================================================== */
+let PD=null, PF='Todas';
+async function askPin(){
+  if (PIN) return true;
+  const p = await modal(DEMO?'PIN del panel (en la demostración: 1234)':'PIN del panel', true); if(!p) return false;
+  PIN=p; return true;
+}
+async function viewPanel(){
+  $('#app').className='';
+  if(!(await askPin())) return go('');
+  $('#app').innerHTML='<p class="lead">Cargando datos…</p>';
+  try{ PD = await api('datosPanel', PIN); }catch(e){ PIN=null; toast(String(e.message||e), true); return go(''); }
+  renderPanel();
+}
+const S = v => String(v??'').trim();
+const multi = v => S(v).split(' | ').filter(Boolean);
+function count(rows, key, opts){ const m=new Map(opts.map(o=>[o,0])); rows.forEach(r=>{ const v=S(r[key]); if(v && m.has(v)) m.set(v, m.get(v)+1); }); return [...m.entries()]; }
+function countMulti(rows, key){ const m=new Map(); rows.forEach(r=>multi(r[key]).forEach(v=>m.set(v,(m.get(v)||0)+1))); return [...m.entries()].sort((a,b)=>b[1]-a[1]); }
+function answered(rows, key){ return rows.filter(r=>S(r[key])!=='').length; }
+function barsHTML(title, sub, data, n, color){
+  const max = Math.max(1, ...data.map(d=>d[1]));
+  return `<div class="chart"><h4>${esc(title)}</h4><div class="sub">${esc(sub)} · n = ${n}</div>
+   ${data.length? data.map(([l,v])=>`<div class="br"><div>${esc(l)}</div><div class="tr"><i style="width:${(100*v/max).toFixed(1)}%;background:${color}"></i></div><div class="n">${v} · ${n?Math.round(100*v/n):0}%</div></div>`).join('') : '<div class="unit">Sin datos todavía</div>'}</div>`;
+}
+function renderPanel(){
+  const units = PD.config.unidades.map(u=>u.nombre);
+  const fu = r => PF==='Todas' || r['Unidad']===PF;
+  const p2all = PD.pac2.filter(fu), p2 = p2all.filter(r=>S(r['Consentimiento informado'])==='Sí');
+  const keys2 = new Set(p2.map(r=>r._clave));
+  const p3 = PD.pac3.filter(fu).filter(r=>keys2.has(r._clave) || !PD.pac2.length);
+  const seg = PD.seg.filter(fu);
+  const censo = PD.unidad.filter(fu).reduce((s,r)=>s+(Number(r['U2 Pacientes registrados a mediodía'])||0),0);
+  // IMC
+  const imcCats=[['< 18,5',0],['18,5–24,9',0],['25–29,9',0],['≥ 30',0]]; let nImc=0;
+  p2.forEach(r=>{ const w=Number(r['2a Peso (kg)']), h=Number(r['2a Estatura (cm)'])/100; if(w>0&&h>0){ const b=w/(h*h); nImc++; imcCats[b<18.5?0:b<25?1:b<30?2:3][1]++; }});
+  // Edad
+  const year = Number(String(PD.config.fecha||'2026').slice(0,4)) || 2026;
+  const ageCats=[['18–39',0],['40–64',0],['65–79',0],['≥ 80',0]]; let nAge=0;
+  p2.forEach(r=>{ const y=Number(r['2a Año de nacimiento']); if(y>1900){ const a=year-y; nAge++; ageCats[a<40?0:a<65?1:a<80?2:3][1]++; }});
+  // Procesos (2b.13) y soporte (2b.11)
+  const q13 = FORMS.pac2.pages.flatMap(p=>p.qs).find(q=>q.id==='Q13'), q11 = FORMS.pac2.pages.flatMap(p=>p.qs).find(q=>q.id==='Q11');
+  const proc = q13.rows.map(r=>{ const k=q13.k+' · '+r; return [r, p2.filter(x=>S(x[k])==='Sí').length]; });
+  const sop = q11.rows.map(r=>{ const k=q11.k+' · '+r; return [r, p2.filter(x=>S(x[k])==='Sí').length]; });
+  // Brecha: identificados desnutridos/en riesgo y con requerimientos calóricos determinados
+  const risk = p2.filter(r=>['Desnutrido','En riesgo de desnutrición'].includes(S(r['2a.8 Identificado como desnutrido/en riesgo'])));
+  const riskReq = risk.filter(r=>S(r[q13.k+' · '+q13.rows[0]])==='Sí').length;
+  const riskPlan = risk.filter(r=>S(r[q13.k+' · '+q13.rows[3]])==='Sí').length;
+  // Ingesta ≤ mitad hoy
+  const lowEat = p3.filter(r=>['1/2','1/4','Nada'].includes(S(r['3b.13a Ingesta comida principal HOY']))).length;
+  const nEat = answered(p3,'3b.13a Ingesta comida principal HOY');
+  const wl = p3.filter(r=>S(r['3a.9a Pérdida de peso últimos 3 meses'])==='Sí, sin intención').length, nWl=answered(p3,'3a.9a Pérdida de peso últimos 3 meses');
+  const pct = (a,b)=> b? Math.round(100*a/b)+'%' : '—';
+  const C1='#0F7C7C', C2='#1F2A44', C3='#7A1F3D', C4='#C9A227';
+
+  // Avance por unidad
+  const avance = units.map(u=>{ const a=PD.pac2.filter(r=>r['Unidad']===u), c=a.filter(r=>S(r['Consentimiento informado'])==='Sí'), ks=new Set(c.map(r=>r._clave));
+    const cen = PD.unidad.find(r=>r['Unidad']===u);
+    return {u, censo: cen? cen['U2 Pacientes registrados a mediodía'] : '', hoja1: !!cen, reg:a.length, cons:c.length,
+      p3: PD.pac3.filter(r=>ks.has(r._clave)).length, seg: PD.seg.filter(r=>ks.has(r._clave)).length}; });
+  const pend = p2.filter(r=>!PD.pac3.some(x=>x._clave===r._clave)).map(r=>r['Unidad']+' · N° '+r['Paciente N°']);
+
+  $('#app').innerHTML = `
+   <div class="printonly"><h1>Resumen de datos · nutritionDay ${year}</h1><div class="unit">${esc(PD.config.hospital)} · ${fmtDate(PD.config.fecha)} · Unidad: ${esc(PF)} · Generado ${new Date().toLocaleString('es-AR')}</div></div>
+   <div class="noprint" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+     <h1 style="flex:1">Panel de resultados</h1>
+     <select id="pf" style="max-width:220px">${['Todas',...units].map(u=>`<option ${u===PF?'selected':''}>${esc(u)}</option>`).join('')}</select>
+     <button class="btn sm navy" onclick="doPrint()">🖨 Imprimir / PDF</button>
+     <button class="btn sm ghost" onclick="viewPanel()">⟳ Actualizar</button>
+   </div>
+   <p class="lead noprint">Resumen automático de los registros guardados. Solo se analizan pacientes con consentimiento informado. Los datos son preliminares hasta su carga y validación en la base nutritionDay.</p>
+   ${DEMO?`<div class="noprint" style="margin-bottom:12px"><button class="btn sm bord" onclick="demoData()">Cargar 40 pacientes ficticios de ejemplo</button> <button class="btn sm ghost" onclick="demoClear()">Borrar datos de demo</button></div>`:''}
+   <div class="kpis">
+    <div class="kpi"><div class="v">${censo||'—'}</div><div class="l">Pacientes internados a mediodía (hojas 1a)</div></div>
+    <div class="kpi"><div class="v">${p2.length}</div><div class="l">Pacientes participantes (con consentimiento) · ${pct(p2.length, censo)} del censo</div></div>
+    <div class="kpi"><div class="v">${p3.length}</div><div class="l">Cuestionarios del paciente (3a/3b) · ${pct(p3.length,p2.length)}</div></div>
+    <div class="kpi"><div class="v">${pct(risk.length,p2.length)}</div><div class="l">Identificados desnutridos o en riesgo por el equipo (2a.8)</div></div>
+    <div class="kpi"><div class="v">${pct(lowEat,nEat)}</div><div class="l">Comieron la mitad o menos del almuerzo de hoy (3b.13a)</div></div>
+    <div class="kpi"><div class="v">${pct(wl,nWl)}</div><div class="l">Pérdida de peso no intencional en 3 meses (3a.9a)</div></div>
+   </div>
+   <h2>Estado nutricional</h2>
+   <div class="charts">
+    ${barsHTML('Identificación previa de malnutrición','Hoja 2a · pregunta 8', count(p2,'2a.8 Identificado como desnutrido/en riesgo',['Desnutrido','En riesgo de desnutrición','No','No lo sé']), answered(p2,'2a.8 Identificado como desnutrido/en riesgo'), C3)}
+    ${barsHTML('Índice de masa corporal','Calculado con peso y estatura de la hoja 2a (kg/m²)', imcCats, nImc, C1)}
+    ${barsHTML('Pérdida de peso en los últimos 3 meses','Hoja 3a · pregunta 9a', count(p3,'3a.9a Pérdida de peso últimos 3 meses',['Sí, intencionalmente','Sí, sin intención','No, mi peso sigue siendo el mismo','No, he ganado peso','No lo sé']), nWl, C3)}
+    ${barsHTML('Edad','Calculada con el año de nacimiento (hoja 2a)', ageCats, nAge, C2)}
+   </div>
+   <h2>Ingesta</h2>
+   <div class="charts">
+    ${barsHTML('Comida principal de hoy','Hoja 3b · pregunta 13a', count(p3,'3b.13a Ingesta comida principal HOY',['Casi todo','1/2','1/4','Nada']), nEat, C1)}
+    ${barsHTML('Ingesta la semana previa a la internación','Hoja 3a · pregunta 12', count(p3,'3a.12 Ingesta semana previa',['Más de lo normal','Normal','Aproximadamente unos 3/4 de lo normal','Aproximadamente la mitad de lo normal','Aproximadamente entre un cuarto y casi nada']), answered(p3,'3a.12 Ingesta semana previa'), C2)}
+    ${barsHTML('Motivos para no comer todo el plato','Hoja 3b · pregunta 17 (respuesta múltiple; % sobre quienes no comieron todo)', countMulti(p3,'3b.17 Motivos de no comer todo').slice(0,8), p3.filter(r=>multi(r['3b.17 Motivos de no comer todo']).length).length, C3)}
+    ${barsHTML('Satisfacción con la comida','Hoja 3b · pregunta 14', count(p3,'3b.14 Satisfacción con la comida',['Muy satisfecho','Algo satisfecho','Neutral','No satisfecho','Muy poco satisfecho','No lo sé']), answered(p3,'3b.14 Satisfacción con la comida'), C4)}
+   </div>
+   <h2>Procesos de atención nutricional</h2>
+   <div class="charts">
+    ${barsHTML('Medidas tomadas desde la admisión (“Sí”)','Hoja 2b · pregunta 13', proc, p2.length, C1)}
+    ${barsHTML('Tipo de alimentación hoy (“Sí”)','Hoja 2b · pregunta 11', sop, p2.length, C2)}
+    <div class="chart"><h4>Pacientes identificados desnutridos / en riesgo</h4><div class="sub">Cruce hoja 2a.8 × 2b.13 · n = ${risk.length}</div>
+     <div class="br"><div>Con requerimientos calóricos determinados</div><div class="tr"><i style="width:${risk.length?100*riskReq/risk.length:0}%;background:${C1}"></i></div><div class="n">${riskReq} · ${pct(riskReq,risk.length)}</div></div>
+     <div class="br"><div>Con plan de tratamiento nutricional</div><div class="tr"><i style="width:${risk.length?100*riskPlan/risk.length:0}%;background:${C1}"></i></div><div class="n">${riskPlan} · ${pct(riskPlan,risk.length)}</div></div></div>
+   </div>
+   <h2 class="noprint">Avance de la carga</h2>
+   <div style="overflow-x:auto"><table class="lst noprint"><tr><th>Unidad</th><th>Hoja 1a/1b</th><th>Censo</th><th>Fichas 2</th><th>Con consent.</th><th>Hojas 3</th><th>30 días</th></tr>
+    ${avance.map(a=>`<tr><td>${esc(a.u)}</td><td>${a.hoja1?'<span class="ok">✓</span>':'<span class="no">falta</span>'}</td><td>${esc(a.censo)}</td><td>${a.reg}</td><td>${a.cons}</td><td>${a.p3} ${a.p3<a.cons?'<span class="no">('+(a.cons-a.p3)+' faltan)</span>':''}</td><td>${a.seg}</td></tr>`).join('')}
+   </table></div>
+   ${pend.length?`<div class="hint noprint">Pacientes con hoja 2 pero sin cuestionario 3a/3b: ${pend.map(esc).join(', ')}</div>`:''}
+   <div class="noprint" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+     <button class="btn navy" onclick="go('seguimiento')">📅 Lista de seguimiento a 30 días</button>
+     <button class="btn ghost" onclick="viewFichas()">📄 Fichas por paciente (para transcribir)</button></div>
+   <div class="foot">Datos preliminares de uso interno · Basado en nutritionDay en el Hospital (CC BY-NC-ND).</div>`;
+  $('#pf').onchange = e=>{ PF=e.target.value; renderPanel(); };
+}
+function viewFichas(){
+  const rows = PD.pac2.slice().sort((a,b)=>(a['Unidad']+a['Paciente N°']).localeCompare(b['Unidad']+b['Paciente N°'], 'es', {numeric:true}));
+  $('#app').innerHTML = `<div class="noprint" style="display:flex;gap:10px;align-items:center"><h1 style="flex:1">Fichas por paciente</h1><button class="btn sm ghost" onclick="renderPanel()">← Panel</button></div>
+   <p class="lead noprint">Vista ordenada como los cuestionarios, útil para transcribir a la base nutritionDay. “Editar” abre el formulario con los datos cargados.</p>
+   <div style="overflow-x:auto"><table class="lst"><tr><th>Unidad</th><th>N°</th><th>Consent.</th><th>2a/2b/2c</th><th>3a/3b</th><th></th></tr>
+   ${rows.map(r=>{ const has3=PD.pac3.some(x=>x._clave===r._clave); return `<tr><td>${esc(r['Unidad'])}</td><td>${esc(r['Paciente N°'])}</td><td>${esc(r['Consentimiento informado'])}</td>
+     <td><button class="btn sm ghost" onclick="ficha('pac2','${esc(r._clave)}')">Ver</button> <button class="btn sm ghost" onclick="editRec('pac2','${esc(r._clave)}')">Editar</button></td>
+     <td>${has3?`<button class="btn sm ghost" onclick="ficha('pac3','${esc(r._clave)}')">Ver</button> <button class="btn sm ghost" onclick="editRec('pac3','${esc(r._clave)}')">Editar</button>`:'<span class="no">falta</span>'}</td><td></td></tr>`; }).join('')}
+   </table></div>`;
+}
+function recToD(fid, r){
+  const f=FORMS[fid], D={};
+  f.pages.flatMap(p=>p.qs).forEach(q=>colKeys(q).forEach(k=>{ if(r[k]===undefined||r[k]==='') return; D[k] = (q.t==='check'||q.t==='gridcheck') ? multi(r[k]) : String(r[k]); }));
+  ['Unidad','Paciente N°','Fecha','Código del Centro','Código de la Unidad'].forEach(k=>{ if(r[k]!==undefined) D[k]=String(r[k]); });
+  return D;
+}
+function ficha(fid, clave){
+  const r = PD[fid].find(x=>x._clave===clave); if(!r) return;
+  const D=recToD(fid, r);
+  $('#app').innerHTML = `<div class="noprint" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h1 style="flex:1">${esc(FORMS[fid].title)}</h1>
+     <button class="btn sm navy" onclick="doPrint()">🖨 Imprimir</button><button class="btn sm ghost" onclick="viewFichas()">← Fichas</button></div>
+   <div class="unit"><b>${esc(D['Unidad'])}</b> · Paciente N° <b>${esc(D['Paciente N°'])}</b> · Código de centro ${esc(PD.config.centro)} · ${fmtDate(D['Fecha'])}</div>
+   ${reviewHTML(FORMS[fid], D)}`;
+}
+function editRec(fid, clave){
+  const r = PD[fid].find(x=>x._clave===clave); if(!r) return;
+  LS.del(draftKey(fid)); history.replaceState(null,'','#'+fid); openForm(fid, true, recToD(fid, r)); CUR.page=0; renderForm();
+}
+async function viewSeguimiento(){
+  $('#app').className='';
+  if(!(await askPin())) return go('');
+  $('#app').innerHTML='<p class="lead">Cargando…</p>';
+  let L; try{ L = await api('listaSeguimiento', PIN); }catch(e){ PIN=null; toast(String(e.message||e), true); return go(''); }
+  L = L.filter(x=>x.consentimiento==='Sí').sort((a,b)=>(a.unidad+a.paciente).localeCompare(b.unidad+b.paciente,'es',{numeric:true}));
+  const d30 = (()=>{ const d=new Date((CFG.fecha||'2026-11-12')+'T12:00:00'); d.setDate(d.getDate()+30); return d.toLocaleDateString('es-AR'); })();
+  $('#app').innerHTML = `<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h1 style="flex:1">Seguimiento a 30 días</h1><button class="btn sm navy noprint" onclick="doPrint()">🖨 Imprimir</button></div>
+   <p class="lead">Fecha de control: <b>${d30}</b>. Lista de uso local con DNI para buscar la historia clínica. <b>No compartir ni enviar a nutritionDay.</b></p>
+   <div style="overflow-x:auto"><table class="lst"><tr><th>Unidad</th><th>N°</th><th>DNI</th><th>Cama</th><th>Estado</th><th class="noprint"></th></tr>
+   ${L.map(x=>`<tr><td>${esc(x.unidad)}</td><td>${esc(x.paciente)}</td><td>${esc(x.dni)||'<span class="no">sin DNI</span>'}</td><td>${esc(x.cama)}</td>
+     <td>${x.cargado?'<span class="ok">✓ cargado</span>':'pendiente'}</td>
+     <td class="noprint"><button class="btn sm ${x.cargado?'ghost':'pri'}" onclick="openSeg('${esc(x.unidad)}','${esc(x.paciente)}',${x.cargado})">${x.cargado?'Editar':'Cargar'}</button></td></tr>`).join('') || '<tr><td colspan="6" class="unit">Todavía no hay pacientes con consentimiento.</td></tr>'}
+   </table></div>`;
+}
+async function openSeg(u, p, cargado){
+  LS.del(draftKey('seg')); history.replaceState(null,'','#seg');
+  openForm('seg', true, {'Unidad':u, 'Paciente N°':p});
+  if (cargado) await loadExisting();
+}
+
+/* ---- datos ficticios para la demostración ---- */
+function demoData(){
+  const rnd=a=>a[Math.floor(Math.random()*a.length)], db=Mock._db();
+  const units=[['Clínica Médica','medica',22],['Cirugía','quirurgica',18]];
+  units.forEach(([u,t,n])=>{
+    Mock._up(db.unidad,'U|'+u,{'Unidad':u,'Fecha':'2026-11-12','U2 Pacientes registrados a mediodía':n+4,'U3 Capacidad total de camas':n+8});
+    for(let i=1;i<=n;i++){
+      const c=Math.random()<.92?'Sí':'No', k=u+'|'+i;
+      const r={'Unidad':u,'Paciente N°':String(i),'Fecha':'2026-11-12','Consentimiento informado':c};
+      if(c==='Sí'){
+        r['2a Año de nacimiento']=1935+Math.floor(Math.random()*65); r['2a Peso (kg)']=(45+Math.random()*50).toFixed(1); r['2a Estatura (cm)']=150+Math.floor(Math.random()*35);
+        r['2a.8 Identificado como desnutrido/en riesgo']=rnd(['Desnutrido','En riesgo de desnutrición','En riesgo de desnutrición','No','No','No lo sé']);
+        FORMS.pac2.pages.flatMap(p=>p.qs).find(q=>q.id==='Q13').rows.forEach(rw=>r['2b.13 Medidas desde la admisión · '+rw]=rnd(['Sí','No','No','No lo sé']));
+        FORMS.pac2.pages.flatMap(p=>p.qs).find(q=>q.id==='Q11').rows.forEach((rw,j)=>r['2b.11 Ingesta · '+rw]= j===0? rnd(['Sí','Sí','No']) : rnd(['Sí','No','No','No']));
+        Mock._up(db.id,k,{'Unidad':u,'Paciente N°':String(i),'DNI':String(10000000+Math.floor(Math.random()*40000000)),'Cama / habitación':String(100+i)});
+        if(Math.random()<.85){
+          const eat=rnd(['Casi todo','Casi todo','1/2','1/4','Nada']);
+          const r3={'Unidad':u,'Paciente N°':String(i),'Fecha':'2026-11-12','3b.13a Ingesta comida principal HOY':eat,
+            '3a.9a Pérdida de peso últimos 3 meses':rnd(['Sí, sin intención','Sí, sin intención','No, mi peso sigue siendo el mismo','No, he ganado peso','No lo sé','Sí, intencionalmente']),
+            '3a.12 Ingesta semana previa':rnd(['Normal','Normal','Aproximadamente unos 3/4 de lo normal','Aproximadamente la mitad de lo normal','Aproximadamente entre un cuarto y casi nada','Más de lo normal']),
+            '3b.14 Satisfacción con la comida':rnd(['Muy satisfecho','Algo satisfecho','Algo satisfecho','Neutral','No satisfecho','Muy poco satisfecho'])};
+          if(eat!=='Casi todo'){ const ms=FORMS.pac3.pages.flatMap(p=>p.qs).find(q=>q.id==='P17').o; r3['3b.17 Motivos de no comer todo']=[rnd(ms),rnd(ms.slice(7,12))].filter((v,ix,a)=>a.indexOf(v)===ix); }
+          Mock._up(db.pac3,k,r3);
+        }
+      }
+      Mock._up(db.pac2,k,r);
+    }
+  });
+  Mock._save(db); toast('Datos de ejemplo cargados'); viewPanel();
+}
+async function demoClear(){ if(await modal('¿Borrar todos los datos de la demostración en este dispositivo?')){ LS.del('ndhpf_demo'); toast('Datos de demo borrados'); viewPanel(); } }
+
+
+/* =====================================================================
+   10. LOGOS, INSTALACIÓN (PWA) Y AJUSTES
+   ===================================================================== */
+function loadImg(img, src, onok){ if(!img||!src) return; img.onload=()=>{ img.style.display='block'; onok&&onok(); }; img.onerror=()=>{ img.style.display='none'; }; img.src=src; }
+function paintLogos(){
+  const any=()=>{ const l=$('#logos'); if(l) l.style.display='flex'; };
+  const l=$('#logos'); if(l) l.style.display='none';
+  loadImg($('#lg1'), APPCFG.LOGO_HOSPITAL, any); loadImg($('#lg2'), APPCFG.LOGO_NUTRICION, any);
+}
+function paintHeaderLogos(){
+  const hide=()=>{ $('#hlogo').style.display='none'; };
+  loadImg($('#hl1'), APPCFG.LOGO_HOSPITAL, hide); loadImg($('#hl2'), APPCFG.LOGO_NUTRICION, hide);
+}
+let deferredPrompt=null;
+const isStandalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferredPrompt=e; paintInstall(); });
+window.addEventListener('appinstalled', ()=>{ deferredPrompt=null; toast('Acceso directo instalado ✓'); paintInstall(); });
+function paintInstall(){
+  const c=$('#installcard'); if(!c) return;
+  if (isStandalone() || location.protocol==='file:'){ c.style.display='none'; return; }
+  c.style.display='';
+  if (deferredPrompt){
+    c.innerHTML=`<div class="ic t-gold">📲</div><h3>Instalar en este dispositivo</h3><p>Agrega un acceso directo en la pantalla de inicio. Se abre como una app, a pantalla completa.</p>
+      <button class="btn pri sm" style="margin-top:10px" onclick="doInstall()">Instalar acceso directo</button>`;
+  } else if (isIOS()){
+    c.innerHTML=`<div class="ic t-gold">📲</div><h3>Agregar a la pantalla de inicio</h3><p>En Safari: tocá <b>Compartir</b> (cuadrado con flecha ↑) → <b>Agregar a inicio</b> → <b>Agregar</b>.</p>`;
+  } else {
+    c.innerHTML=`<div class="ic t-gold">📲</div><h3>Agregar a la pantalla de inicio</h3><p>En Chrome: menú <b>⋮</b> → <b>Agregar a la pantalla principal</b> o <b>Instalar app</b>. En computadora: ícono de instalar en la barra de direcciones.</p>`;
+  }
+}
+async function doInstall(){ if(!deferredPrompt) return; deferredPrompt.prompt(); try{ await deferredPrompt.userChoice; }catch(e){} deferredPrompt=null; paintInstall(); }
+
+function viewAjustes(){
+  const ov = LS.get('ndhpf_api_override','');
+  $('#app').className='';
+  $('#app').innerHTML = `<h1>Conexión con la planilla</h1>
+   <p class="lead">La página guarda los datos en una planilla de Google a través de su API (Apps Script). La URL termina en <b>/exec</b>.</p>
+   <div class="card">
+    <div class="unit">Modo actual: <b>${MODE==='api'?'Conectado a planilla':MODE==='gas'?'Apps Script':'Demostración (sin planilla)'}</b></div>
+    <div class="unit" style="margin-top:6px">URL configurada para todos (config.js): <code style="word-break:break-all">${esc(APPCFG.API_URL||'— vacía —')}</code></div>
+    ${ov?`<div class="unit" style="margin-top:6px">URL solo en este dispositivo: <code style="word-break:break-all">${esc(ov)}</code></div>`:''}
+    <h2>Probar o cambiar en este dispositivo</h2>
+    <input type="text" id="apiin" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(ov||APPCFG.API_URL||'')}">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+     <button class="btn navy sm" onclick="testApi()">Probar conexión</button>
+     <button class="btn pri sm" onclick="saveApi()">Usar en este dispositivo</button>
+     ${ov?'<button class="btn ghost sm" onclick="clearApi()">Volver a la URL de config.js</button>':''}
+    </div>
+    <div id="apires" style="margin-top:10px"></div>
+   </div>
+   <div class="hint" style="margin-top:12px">Para que <b>todos</b> los dispositivos usen la planilla nueva (por ejemplo, al pasar de la cuenta personal a la del hospital) se cambia una sola línea en <b>config.js</b> del repositorio. Esta pantalla sirve para pruebas en un solo equipo.</div>`;
+}
+async function testApi(){
+  const u=$('#apiin').value.trim(), o=$('#apires');
+  if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)){ o.innerHTML='<div class="hint bord">La URL debe empezar con https://script.google.com/</div>'; return; }
+  o.innerHTML='<div class="unit">Probando…</div>';
+  try{ const c=await apiFetch(u,'getConfig',[]); o.innerHTML=`<div class="hint teal">✓ Conectado: <b>${esc(c.hospital)}</b> · ${c.unidades.length} unidad(es) · nDay ${esc(fmtDate(c.fecha))}</div>`; }
+  catch(e){ o.innerHTML=`<div class="hint bord">✗ No se pudo conectar: ${esc(e.message||e)}. Verificá que la implementación tenga acceso “Cualquier usuario”.</div>`; }
+}
+function saveApi(){ const u=$('#apiin').value.trim(); if(!/^https:\/\/script\.google\.com\//.test(u)) return toast('URL inválida', true); LS.set('ndhpf_api_override', u); location.hash=''; location.reload(); }
+function clearApi(){ LS.del('ndhpf_api_override'); location.hash=''; location.reload(); }
+
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+  window.addEventListener('load', ()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+
+/* =====================================================================
+   9. ARRANQUE
+   ===================================================================== */
+(async function init(){
+  const mc=$('#mchip');
+  mc.textContent = DEMO ? 'Demostración' : 'Conectado';
+  mc.style.cursor='pointer'; mc.onclick=()=>go('ajustes');
+  paintHeaderLogos();
+  if (DEMO) mc.classList.add('demo');
+  try{ CFG = await api('getConfig'); LS.set('ndhpf_cfg_'+MODE, CFG); }
+  catch(e){
+    CFG = LS.get('ndhpf_cfg_'+MODE, null);
+    if (CFG) toast('Sin conexión: se usa la última configuración guardada. Los registros se enviarán al volver la señal.', true);
+    else { CFG = {hospital:'Hospital', centro:'', fecha:'', unidades:[]}; toast('No se pudo leer la configuración: '+(e.message||e), true); }
+  }
+  $('#hname').textContent = CFG.hospital || 'Registro digital';
+  paintQueue(); flushQueue();
+  route();
+})();
+</script>
+</body>
+</html>
